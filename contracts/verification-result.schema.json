@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema", "$id": "urn:nexilb:schema:verification-result:1.0",
+  "type": "object", "additionalProperties": false,
+  "required": ["$schema", "schema_version", "case_id", "verification_status", "reason", "criteria_results"],
+  "properties": {
+    "$schema": {"const": "urn:nexilb:schema:verification-result:1.0"}, "schema_version": {"const": "1.0"}, "case_id": {"enum": ["CASE-NPHASE-WETTING-MINIMAL", "CASE-IMB-COUPLING-MINIMAL", "CASE-DEM-CONTACT-RESTART", "CASE-PURE-COUPLED-DEGENERATION"]},
+    "verification_status": {"const": "verification_not_evaluated"}, "reason": {"const": "runtime_unavailable"}, "criteria_results": {"type": "array", "maxItems": 0}
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "urn:nexilb:schema:secondary-case-manifest:1.1", "schema_version": "1.1",
+  "case_id": "CASE-DEM-CONTACT-RESTART", "model_ids": ["model.NPhaseImbDemContactAngle"],
+  "contract_state": {"implementation": "c11_consumer_executable", "runtime": "compatible_runtime_config_path_lifecycle_available", "physical_acceptance": "not_evaluated"},
+  "objectives": ["objective.dem.one_fixed_particle", "objective.dem.wall_contact_array_gate", "objective.checkpoint.restart_slot_gate"],
+  "required_assets": [
+    {"asset_id": "asset.dem.2d.fixed_bundle", "role": "2D config, exactly one fixed-particle fixture, and prescribed trajectory", "status": "present_sha256_verified"},
+    {"asset_id": "asset.dem.3d.fixed_bundle", "role": "3D config, exactly one fixed-particle fixture, and prescribed trajectory", "status": "present_sha256_verified"}
+  ],
+  "required_capabilities": [
+    {"capability_id": "capability.config_path.lifecycle", "status": "available"},
+    {"capability_id": "capability.input.transaction", "status": "unavailable_null_slot"},
+    {"capability_id": "capability.validation.model_and_geometry", "status": "available"},
+    {"capability_id": "capability.snapshot.wall_contact_array", "status": "available"},
+    {"capability_id": "capability.snapshot.particle_array", "status": "available"},
+    {"capability_id": "capability.checkpoint.restart", "status": "available"}
+  ],
+  "blocking_test_ids": ["TST-DEM-ONE-FIXED-PARTICLE", "TST-DEM-WALL-CONTACT-SNAPSHOT", "TST-DEM-CHECKPOINT-RESTART"],
+  "blocking_validation_ids": ["VAL-DEM-WALL-CONTACT-ARRAY", "VAL-DEM-FIXED-PARTICLE-STATE", "VAL-DEM-RESTART-CONTINUITY"],
+  "paths": {"case_config": "case.json", "variants": "variants.json", "asset_manifest": "asset-manifest.json", "acceptance": "expected/acceptance.json", "reference_manifest": "expected/reference-manifest.json", "run_manifest": "contract-state/run-manifest.json", "verification_result": "contract-state/verification-result.json", "media_manifest": "contract-state/media-manifest.json"},
+  "unresolved_release_bindings": ["runtime_identity", "static_catalog_digest", "effective_catalog_digest", "hardware_matrix_id", "driver_matrix_id", "approved_run_digests", "approved_reference_digests", "license_and_publication_rights"]
+}

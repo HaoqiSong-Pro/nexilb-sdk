@@ -1,0 +1,23 @@
+{
+  "$schema": "urn:nexilb:schema:three-chain-consumption:1.0",
+  "schema_version": "1.0",
+  "state": "contract_only_runtime_unavailable",
+  "chains": [
+    {
+      "chain_id": "chain.nexilb.native",
+      "model_ids": ["model.nexilb.NSAllen", "model.nexilb.NSAllenImbPrescribedMotion"],
+      "variants": ["2d-f32", "2d-f64", "3d-f32", "3d-f64"]
+    },
+    {
+      "chain_id": "chain.NPhaseContactAngle",
+      "model_ids": ["model.NPhaseContactAngle"],
+      "variants": ["2d-f32", "2d-f64", "3d-f32", "3d-f64"]
+    },
+    {
+      "chain_id": "chain.NPhaseImbDemContactAngle",
+      "model_ids": ["model.NPhaseImbDemContactAngle"],
+      "variants": ["2d-f32", "2d-f64", "3d-f32", "3d-f64"]
+    }
+  ]
+}
+

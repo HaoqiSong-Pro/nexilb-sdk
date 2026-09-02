@@ -1,0 +1,8 @@
+[
+  {"case_id":"extra-member","raw_request":"{\"config_path\":\"case/config.json\",\"mode\":\"run\"}"},
+  {"case_id":"unicode-escape","raw_request":"{\"config_path\":\"case/\\u0063onfig.json\"}"},
+  {"case_id":"absolute","raw_request":"{\"config_path\":\"/case/config.json\"}"},
+  {"case_id":"parent-traversal","raw_request":"{\"config_path\":\"case/../config.json\"}"},
+  {"case_id":"backslash","raw_request":"{\"config_path\":\"case\\\\config.json\"}"},
+  {"case_id":"empty-segment","raw_request":"{\"config_path\":\"case//config.json\"}"}
+]

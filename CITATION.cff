@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "Please cite NexiLB v1.0.0 and the associated paper when using this program in research."
+title: "NexiLB public SDK"
+type: software
+authors:
+  - family-names: Song
+    given-names: Haoqi
+    email: haoqisong@126.com
+version: 1.0.0
+license: LicenseRef-NexiLB-Research-Use-1.0

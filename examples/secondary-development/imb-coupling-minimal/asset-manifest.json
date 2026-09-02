@@ -1,0 +1,15 @@
+{
+  "$schema": "urn:nexilb:schema:secondary-case-assets:1.1",
+  "schema_version": "1.1",
+  "case_id": "CASE-IMB-COUPLING-MINIMAL",
+  "hash_algorithm": "sha256",
+  "asset_root": "assets",
+  "assets": [
+    {"path": "assets/2d/config.txt", "dimension": 2, "role": "runtime_config", "size_bytes": 1317, "sha256": "aa3ee6a42dd2094fcf290546aec5d88fd19df36a88b8eae1c09bd16857d4bcec"},
+    {"path": "assets/2d/particles_D20.csv", "dimension": 2, "role": "particle_fixture", "size_bytes": 78, "sha256": "156d44d813b829a2ad2438cd47e88be2f03af2356cded2c4050b9121ba1dcfe7"},
+    {"path": "assets/2d/trajectory_D20.csv", "dimension": 2, "role": "prescribed_trajectory", "size_bytes": 93, "sha256": "0f8e5e4970230b1dea75793c413ed45e84d657111abb0316af1dfc6e0ba1282d"},
+    {"path": "assets/3d/config.txt", "dimension": 3, "role": "runtime_config", "size_bytes": 1473, "sha256": "d5bf2572acf8c40d48244bc0239eb65955b707a33e6d32fc3da3906790fda19a"},
+    {"path": "assets/3d/particles_N5.csv", "dimension": 3, "role": "particle_fixture", "size_bytes": 88, "sha256": "7b9a0139c811f3d61995f0065c0bd1f54b4670b561ac3b1f4beb47697a6085d4"},
+    {"path": "assets/3d/trajectory_N5.csv", "dimension": 3, "role": "prescribed_trajectory", "size_bytes": 102, "sha256": "7f9acbe922d4caa2e30dd973f60c4aee4ce2d07d530584d1b3030594675b8288"}
+  ]
+}

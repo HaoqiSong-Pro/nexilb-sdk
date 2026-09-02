@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:nexilb:schema:case-config-envelope:1.0",
+  "type": "object", "additionalProperties": false,
+  "required": ["$schema", "schema_version", "case_id", "contract_state", "model_configs", "semantic_requirements", "input_asset_ids"],
+  "properties": {
+    "$schema": {"const": "urn:nexilb:schema:case-config-envelope:1.0"}, "schema_version": {"const": "1.0"},
+    "case_id": {"enum": ["CASE-NPHASE-WETTING-MINIMAL", "CASE-IMB-COUPLING-MINIMAL", "CASE-DEM-CONTACT-RESTART", "CASE-PURE-COUPLED-DEGENERATION"]},
+    "contract_state": {"$ref": "#/$defs/state"},
+    "model_configs": {"type": "array", "minItems": 1, "maxItems": 2, "items": {"type": "object", "additionalProperties": false, "required": ["config_id", "model_id", "configuration_status"], "properties": {"config_id": {"type": "string", "pattern": "^config\\.[a-z0-9_.-]+$"}, "model_id": {"enum": ["model.NPhaseContactAngle", "model.NPhaseImbDemContactAngle"]}, "configuration_status": {"const": "not_materialized"}}}},
+    "semantic_requirements": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^REQ-[A-Z0-9]+(-[A-Z0-9]+)*$"}},
+    "input_asset_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^asset\\.[a-z0-9_.-]+$"}}
+  },
+  "allOf": [
+    {"if": {"properties": {"case_id": {"const": "CASE-NPHASE-WETTING-MINIMAL"}}, "required": ["case_id"]}, "then": {"properties": {"model_configs": {"const": [{"config_id": "config.nphase.wetting", "model_id": "model.NPhaseContactAngle", "configuration_status": "not_materialized"}]}}}},
+    {"if": {"properties": {"case_id": {"const": "CASE-IMB-COUPLING-MINIMAL"}}, "required": ["case_id"]}, "then": {"properties": {"model_configs": {"const": [{"config_id": "config.imb.contact_free", "model_id": "model.NPhaseImbDemContactAngle", "configuration_status": "not_materialized"}]}}}},
+    {"if": {"properties": {"case_id": {"const": "CASE-DEM-CONTACT-RESTART"}}, "required": ["case_id"]}, "then": {"properties": {"model_configs": {"const": [{"config_id": "config.dem.contact_restart", "model_id": "model.NPhaseImbDemContactAngle", "configuration_status": "not_materialized"}]}}}},
+    {"if": {"properties": {"case_id": {"const": "CASE-PURE-COUPLED-DEGENERATION"}}, "required": ["case_id"]}, "then": {"properties": {"model_configs": {"const": [{"config_id": "config.degeneration.pure", "model_id": "model.NPhaseContactAngle", "configuration_status": "not_materialized"}, {"config_id": "config.degeneration.coupled_zero_particle", "model_id": "model.NPhaseImbDemContactAngle", "configuration_status": "not_materialized"}]}}}}
+  ],
+  "$defs": {"state": {"type": "object", "additionalProperties": false, "required": ["implementation", "runtime", "verification"], "properties": {"implementation": {"const": "implementation_not_present"}, "runtime": {"const": "runtime_unavailable"}, "verification": {"const": "verification_not_evaluated"}}}}
+}

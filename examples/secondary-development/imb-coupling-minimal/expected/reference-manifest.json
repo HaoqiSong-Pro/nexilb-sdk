@@ -1,0 +1,9 @@
+{
+  "$schema":"urn:nexilb:schema:secondary-case-reference:1.1","schema_version":"1.1","case_id":"CASE-IMB-COUPLING-MINIMAL","reference_status":"not_evaluated",
+  "references":[
+    {"artifact_id":"reference.imb.zero_contacts","role":"planned zero-contact evidence","status":"planned_not_approved","required_evidence_ids":["VAL-IMB-POSITIVE-CLEARANCE"]},
+    {"artifact_id":"reference.imb.trajectory","role":"planned fixed-body trajectory reference","status":"planned_not_approved","required_evidence_ids":["VAL-IMB-TRAJECTORY"]},
+    {"artifact_id":"reference.imb.hydrodynamic_load","role":"planned isolated hydrodynamic force and torque reference","status":"planned_not_approved","required_evidence_ids":["VAL-IMB-HYDRODYNAMIC-FORCE-TORQUE"]},
+    {"artifact_id":"reference.imb.fluid_and_restart","role":"planned fluid-field and restart reference after snapshot/checkpoint slots exist","status":"planned_not_approved","required_evidence_ids":["VAL-IMB-FLUID-FIELDS","VAL-IMB-RESTART-CONTINUITY"]}
+  ]
+}

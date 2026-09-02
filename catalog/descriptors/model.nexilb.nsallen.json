@@ -1,0 +1,33 @@
+{
+  "$schema": "urn:nexilb:schema:catalog-descriptor:0.2",
+  "descriptor_schema_version": {"major": 0, "minor": 2},
+  "entity_id": "model.nexilb.NSAllen",
+  "kind": {"id": "model", "code": 1},
+  "descriptor_revision": {"major": 0, "minor": 2},
+  "public_name": "NexiLB NSAllen",
+  "summary": "Two-phase Navier-Stokes and conservative Allen-Cahn model available through compatible 2D and 3D CUDA runtimes.",
+  "visibility": "public",
+  "scope": "library_static",
+  "status": {
+    "contract": "runtime_contract",
+    "implementation": "present_in_controlled_runtime",
+    "runtime": "available_with_compatible_runtime",
+    "verification": "covered_by_cuda_runtime_tests"
+  },
+  "availability_reason_id": "status.controlled_runtime.available",
+  "schema_ref": {"state": "runtime_descriptor_schema_available"},
+  "relations": [
+    {"relation_id": "member_of", "target_id": "chain.nexilb.native"}
+  ],
+  "blocking_requirement_ids": [],
+  "evidence_ids": ["test.runtime.dynamic_load"],
+  "payload": {
+    "creatable": true,
+    "declared_contract_features": [
+      "regular_execution_lifecycle",
+      "source_case_profiles"
+    ],
+    "supported_dimensions": [2, 3],
+    "supported_precisions": ["f32", "f64"]
+  }
+}

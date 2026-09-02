@@ -1,0 +1,13 @@
+{
+  "$schema": "urn:nexilb:schema:secondary-case-assets:1.1",
+  "schema_version": "1.1",
+  "case_id": "CASE-NPHASE-WETTING-MINIMAL",
+  "hash_algorithm": "sha256",
+  "asset_root": "assets",
+  "assets": [
+    {"path": "assets/2d/config-f32.txt", "dimension": 2, "role": "runtime_config", "size_bytes": 1190, "sha256": "f2e9a0a22f24dd11f1fd70df7e2f1335a7dc86e516b629b6e8499d58470cbecd"},
+    {"path": "assets/2d/config-f64.txt", "dimension": 2, "role": "runtime_config", "size_bytes": 1191, "sha256": "dcfd90927708894d63f5cd592f1d7fa8428a0a778ef2c079009397a92124f7ed"},
+    {"path": "assets/3d/config-f32.txt", "dimension": 3, "role": "runtime_config", "size_bytes": 1505, "sha256": "b7d43fdeddbbc25abd48951b53aaf65045c09be5f3f8e09bbc36171887bfc31f"},
+    {"path": "assets/3d/config-f64.txt", "dimension": 3, "role": "runtime_config", "size_bytes": 1506, "sha256": "715bdba61a0d41dceff5c12810d2c2c6e2b00e6d595733bceb9f13fd456602be"}
+  ]
+}

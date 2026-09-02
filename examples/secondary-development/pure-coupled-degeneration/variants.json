@@ -1,0 +1,10 @@
+{
+  "$schema": "urn:nexilb:schema:secondary-case-variants:1.1", "schema_version": "1.1",
+  "case_id": "CASE-PURE-COUPLED-DEGENERATION", "implementation_state": "c11_consumer_executable",
+  "variants": [
+    {"variant_id": "2d-f32", "dimension": 2, "precision": "f32", "build_type": "Release", "config_paths": ["assets/2d/pure-config-f32.txt", "assets/2d/coupled-config.txt"], "runtime_state": "compatible_runtime_config_path_lifecycle_available", "physical_acceptance": "not_evaluated"},
+    {"variant_id": "2d-f64", "dimension": 2, "precision": "f64", "build_type": "Release", "config_paths": ["assets/2d/pure-config-f64.txt", "assets/2d/coupled-config.txt"], "runtime_state": "compatible_runtime_config_path_lifecycle_available", "physical_acceptance": "not_evaluated"},
+    {"variant_id": "3d-f32", "dimension": 3, "precision": "f32", "build_type": "Release", "config_paths": ["assets/3d/pure-config-f32.txt", "assets/3d/coupled-config.txt"], "runtime_state": "compatible_runtime_config_path_lifecycle_available", "physical_acceptance": "not_evaluated"},
+    {"variant_id": "3d-f64", "dimension": 3, "precision": "f64", "build_type": "Release", "config_paths": ["assets/3d/pure-config-f64.txt", "assets/3d/coupled-config.txt"], "runtime_state": "compatible_runtime_config_path_lifecycle_available", "physical_acceptance": "not_evaluated"}
+  ]
+}

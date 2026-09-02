@@ -1,0 +1,353 @@
+{
+  "$schema": "urn:nexilb:schema:secondary-runtime-matrix-evidence:1.0",
+  "schema_version": "1.0",
+  "state": "verified_public_secondary_runtime_matrix",
+  "scope_limit": "API lifecycle and bounded execution only; no physical, convergence or release-acceptance claim",
+  "execution_count": 16,
+  "records": [
+    {
+      "variant": "d2f32",
+      "dimension": 2,
+      "precision": "f32",
+      "case_id": "nphase-wetting-minimal",
+      "runtime_sha256": "cccb294142e3bb57e606fcdd538ee4aedaea7dc4a2ef7a458c5a5c0e8756ce05",
+      "consumer_sha256": "ef57050eccf87600bd7ca1c16fb45eb2546b6c6c75b3bd4c6f13e5d5037621a8",
+      "input_files": [
+        {
+          "path": "config-f32.txt",
+          "byte_length": 1190,
+          "sha256": "f2e9a0a22f24dd11f1fd70df7e2f1335a7dc86e516b629b6e8499d58470cbecd"
+        }
+      ],
+      "required_completion_markers": [
+        "RUN-COMPLETED: model=model.NPhaseContactAngle macro_step=1"
+      ],
+      "process_exit_code": 0,
+      "state": "passed"
+    },
+    {
+      "variant": "d2f32",
+      "dimension": 2,
+      "precision": "f32",
+      "case_id": "imb-coupling-minimal",
+      "runtime_sha256": "cccb294142e3bb57e606fcdd538ee4aedaea7dc4a2ef7a458c5a5c0e8756ce05",
+      "consumer_sha256": "2700ff2b41cd1e708e69ca17f7e84c8425a320ed6d2412e42776dbcd454a0939",
+      "input_files": [
+        {
+          "path": "config.txt",
+          "byte_length": 1317,
+          "sha256": "aa3ee6a42dd2094fcf290546aec5d88fd19df36a88b8eae1c09bd16857d4bcec"
+        }
+      ],
+      "required_completion_markers": [
+        "RUN-COMPLETED: model=model.NPhaseImbDemContactAngle macro_step=1"
+      ],
+      "process_exit_code": 0,
+      "state": "passed"
+    },
+    {
+      "variant": "d2f32",
+      "dimension": 2,
+      "precision": "f32",
+      "case_id": "dem-contact-restart",
+      "runtime_sha256": "cccb294142e3bb57e606fcdd538ee4aedaea7dc4a2ef7a458c5a5c0e8756ce05",
+      "consumer_sha256": "92f6043ab73fdc22d90bef4a7dd8389ab2a5d018851b3b749b9edef1ed749d2b",
+      "input_files": [
+        {
+          "path": "config.txt",
+          "byte_length": 1317,
+          "sha256": "aa3ee6a42dd2094fcf290546aec5d88fd19df36a88b8eae1c09bd16857d4bcec"
+        }
+      ],
+      "required_completion_markers": [
+        "RESTART-COMPLETED: model=model.NPhaseImbDemContactAngle macro_step=2"
+      ],
+      "process_exit_code": 0,
+      "state": "passed"
+    },
+    {
+      "variant": "d2f32",
+      "dimension": 2,
+      "precision": "f32",
+      "case_id": "pure-coupled-degeneration",
+      "runtime_sha256": "cccb294142e3bb57e606fcdd538ee4aedaea7dc4a2ef7a458c5a5c0e8756ce05",
+      "consumer_sha256": "3e826acc599951f7d10cbd887ed3b62148eb55e4320ad9ce38817c61ed23c732",
+      "input_files": [
+        {
+          "path": "pure-config-f32.txt",
+          "byte_length": 1163,
+          "sha256": "69963b2191fc630eadc9b6ebb3301d1dfe3b59b2263e427f2c38cc2981ef1088"
+        },
+        {
+          "path": "coupled-config.txt",
+          "byte_length": 1317,
+          "sha256": "aa3ee6a42dd2094fcf290546aec5d88fd19df36a88b8eae1c09bd16857d4bcec"
+        }
+      ],
+      "required_completion_markers": [
+        "RUN-COMPLETED: model=model.NPhaseContactAngle macro_step=1",
+        "RUN-COMPLETED: model=model.NPhaseImbDemContactAngle macro_step=1"
+      ],
+      "process_exit_code": 0,
+      "state": "passed"
+    },
+    {
+      "variant": "d2f64",
+      "dimension": 2,
+      "precision": "f64",
+      "case_id": "nphase-wetting-minimal",
+      "runtime_sha256": "606010cdd3519a578335c661f56c1ac99a58fad8f7f414996ce6900e1edc6ed9",
+      "consumer_sha256": "ef57050eccf87600bd7ca1c16fb45eb2546b6c6c75b3bd4c6f13e5d5037621a8",
+      "input_files": [
+        {
+          "path": "config-f64.txt",
+          "byte_length": 1191,
+          "sha256": "dcfd90927708894d63f5cd592f1d7fa8428a0a778ef2c079009397a92124f7ed"
+        }
+      ],
+      "required_completion_markers": [
+        "RUN-COMPLETED: model=model.NPhaseContactAngle macro_step=1"
+      ],
+      "process_exit_code": 0,
+      "state": "passed"
+    },
+    {
+      "variant": "d2f64",
+      "dimension": 2,
+      "precision": "f64",
+      "case_id": "imb-coupling-minimal",
+      "runtime_sha256": "606010cdd3519a578335c661f56c1ac99a58fad8f7f414996ce6900e1edc6ed9",
+      "consumer_sha256": "2700ff2b41cd1e708e69ca17f7e84c8425a320ed6d2412e42776dbcd454a0939",
+      "input_files": [
+        {
+          "path": "config.txt",
+          "byte_length": 1317,
+          "sha256": "aa3ee6a42dd2094fcf290546aec5d88fd19df36a88b8eae1c09bd16857d4bcec"
+        }
+      ],
+      "required_completion_markers": [
+        "RUN-COMPLETED: model=model.NPhaseImbDemContactAngle macro_step=1"
+      ],
+      "process_exit_code": 0,
+      "state": "passed"
+    },
+    {
+      "variant": "d2f64",
+      "dimension": 2,
+      "precision": "f64",
+      "case_id": "dem-contact-restart",
+      "runtime_sha256": "606010cdd3519a578335c661f56c1ac99a58fad8f7f414996ce6900e1edc6ed9",
+      "consumer_sha256": "92f6043ab73fdc22d90bef4a7dd8389ab2a5d018851b3b749b9edef1ed749d2b",
+      "input_files": [
+        {
+          "path": "config.txt",
+          "byte_length": 1317,
+          "sha256": "aa3ee6a42dd2094fcf290546aec5d88fd19df36a88b8eae1c09bd16857d4bcec"
+        }
+      ],
+      "required_completion_markers": [
+        "RESTART-COMPLETED: model=model.NPhaseImbDemContactAngle macro_step=2"
+      ],
+      "process_exit_code": 0,
+      "state": "passed"
+    },
+    {
+      "variant": "d2f64",
+      "dimension": 2,
+      "precision": "f64",
+      "case_id": "pure-coupled-degeneration",
+      "runtime_sha256": "606010cdd3519a578335c661f56c1ac99a58fad8f7f414996ce6900e1edc6ed9",
+      "consumer_sha256": "3e826acc599951f7d10cbd887ed3b62148eb55e4320ad9ce38817c61ed23c732",
+      "input_files": [
+        {
+          "path": "pure-config-f64.txt",
+          "byte_length": 1164,
+          "sha256": "79d850f8e9649dfa462115708ec11ef705f543765774a08edf0181c62ffbf9b4"
+        },
+        {
+          "path": "coupled-config.txt",
+          "byte_length": 1317,
+          "sha256": "aa3ee6a42dd2094fcf290546aec5d88fd19df36a88b8eae1c09bd16857d4bcec"
+        }
+      ],
+      "required_completion_markers": [
+        "RUN-COMPLETED: model=model.NPhaseContactAngle macro_step=1",
+        "RUN-COMPLETED: model=model.NPhaseImbDemContactAngle macro_step=1"
+      ],
+      "process_exit_code": 0,
+      "state": "passed"
+    },
+    {
+      "variant": "d3f32",
+      "dimension": 3,
+      "precision": "f32",
+      "case_id": "nphase-wetting-minimal",
+      "runtime_sha256": "008af495b71b86737f66ce50bcbdb89c95660f850a1a288f9d5fab4f236a830f",
+      "consumer_sha256": "ef57050eccf87600bd7ca1c16fb45eb2546b6c6c75b3bd4c6f13e5d5037621a8",
+      "input_files": [
+        {
+          "path": "config-f32.txt",
+          "byte_length": 1505,
+          "sha256": "b7d43fdeddbbc25abd48951b53aaf65045c09be5f3f8e09bbc36171887bfc31f"
+        }
+      ],
+      "required_completion_markers": [
+        "RUN-COMPLETED: model=model.NPhaseContactAngle macro_step=1"
+      ],
+      "process_exit_code": 0,
+      "state": "passed"
+    },
+    {
+      "variant": "d3f32",
+      "dimension": 3,
+      "precision": "f32",
+      "case_id": "imb-coupling-minimal",
+      "runtime_sha256": "008af495b71b86737f66ce50bcbdb89c95660f850a1a288f9d5fab4f236a830f",
+      "consumer_sha256": "2700ff2b41cd1e708e69ca17f7e84c8425a320ed6d2412e42776dbcd454a0939",
+      "input_files": [
+        {
+          "path": "config.txt",
+          "byte_length": 1473,
+          "sha256": "d5bf2572acf8c40d48244bc0239eb65955b707a33e6d32fc3da3906790fda19a"
+        }
+      ],
+      "required_completion_markers": [
+        "RUN-COMPLETED: model=model.NPhaseImbDemContactAngle macro_step=1"
+      ],
+      "process_exit_code": 0,
+      "state": "passed"
+    },
+    {
+      "variant": "d3f32",
+      "dimension": 3,
+      "precision": "f32",
+      "case_id": "dem-contact-restart",
+      "runtime_sha256": "008af495b71b86737f66ce50bcbdb89c95660f850a1a288f9d5fab4f236a830f",
+      "consumer_sha256": "92f6043ab73fdc22d90bef4a7dd8389ab2a5d018851b3b749b9edef1ed749d2b",
+      "input_files": [
+        {
+          "path": "config.txt",
+          "byte_length": 1473,
+          "sha256": "d5bf2572acf8c40d48244bc0239eb65955b707a33e6d32fc3da3906790fda19a"
+        }
+      ],
+      "required_completion_markers": [
+        "RESTART-COMPLETED: model=model.NPhaseImbDemContactAngle macro_step=2"
+      ],
+      "process_exit_code": 0,
+      "state": "passed"
+    },
+    {
+      "variant": "d3f32",
+      "dimension": 3,
+      "precision": "f32",
+      "case_id": "pure-coupled-degeneration",
+      "runtime_sha256": "008af495b71b86737f66ce50bcbdb89c95660f850a1a288f9d5fab4f236a830f",
+      "consumer_sha256": "3e826acc599951f7d10cbd887ed3b62148eb55e4320ad9ce38817c61ed23c732",
+      "input_files": [
+        {
+          "path": "pure-config-f32.txt",
+          "byte_length": 1309,
+          "sha256": "0f3612e098a55b1565cf120e3afdd247400ebb802dc97f569325c1739c8a2c04"
+        },
+        {
+          "path": "coupled-config.txt",
+          "byte_length": 1473,
+          "sha256": "d5bf2572acf8c40d48244bc0239eb65955b707a33e6d32fc3da3906790fda19a"
+        }
+      ],
+      "required_completion_markers": [
+        "RUN-COMPLETED: model=model.NPhaseContactAngle macro_step=1",
+        "RUN-COMPLETED: model=model.NPhaseImbDemContactAngle macro_step=1"
+      ],
+      "process_exit_code": 0,
+      "state": "passed"
+    },
+    {
+      "variant": "d3f64",
+      "dimension": 3,
+      "precision": "f64",
+      "case_id": "nphase-wetting-minimal",
+      "runtime_sha256": "db028bf7e4f2cb2bc63a3ce8c81e59455f7a42a0b0eb63daef41ecbcf55f5635",
+      "consumer_sha256": "ef57050eccf87600bd7ca1c16fb45eb2546b6c6c75b3bd4c6f13e5d5037621a8",
+      "input_files": [
+        {
+          "path": "config-f64.txt",
+          "byte_length": 1506,
+          "sha256": "715bdba61a0d41dceff5c12810d2c2c6e2b00e6d595733bceb9f13fd456602be"
+        }
+      ],
+      "required_completion_markers": [
+        "RUN-COMPLETED: model=model.NPhaseContactAngle macro_step=1"
+      ],
+      "process_exit_code": 0,
+      "state": "passed"
+    },
+    {
+      "variant": "d3f64",
+      "dimension": 3,
+      "precision": "f64",
+      "case_id": "imb-coupling-minimal",
+      "runtime_sha256": "db028bf7e4f2cb2bc63a3ce8c81e59455f7a42a0b0eb63daef41ecbcf55f5635",
+      "consumer_sha256": "2700ff2b41cd1e708e69ca17f7e84c8425a320ed6d2412e42776dbcd454a0939",
+      "input_files": [
+        {
+          "path": "config.txt",
+          "byte_length": 1473,
+          "sha256": "d5bf2572acf8c40d48244bc0239eb65955b707a33e6d32fc3da3906790fda19a"
+        }
+      ],
+      "required_completion_markers": [
+        "RUN-COMPLETED: model=model.NPhaseImbDemContactAngle macro_step=1"
+      ],
+      "process_exit_code": 0,
+      "state": "passed"
+    },
+    {
+      "variant": "d3f64",
+      "dimension": 3,
+      "precision": "f64",
+      "case_id": "dem-contact-restart",
+      "runtime_sha256": "db028bf7e4f2cb2bc63a3ce8c81e59455f7a42a0b0eb63daef41ecbcf55f5635",
+      "consumer_sha256": "92f6043ab73fdc22d90bef4a7dd8389ab2a5d018851b3b749b9edef1ed749d2b",
+      "input_files": [
+        {
+          "path": "config.txt",
+          "byte_length": 1473,
+          "sha256": "d5bf2572acf8c40d48244bc0239eb65955b707a33e6d32fc3da3906790fda19a"
+        }
+      ],
+      "required_completion_markers": [
+        "RESTART-COMPLETED: model=model.NPhaseImbDemContactAngle macro_step=2"
+      ],
+      "process_exit_code": 0,
+      "state": "passed"
+    },
+    {
+      "variant": "d3f64",
+      "dimension": 3,
+      "precision": "f64",
+      "case_id": "pure-coupled-degeneration",
+      "runtime_sha256": "db028bf7e4f2cb2bc63a3ce8c81e59455f7a42a0b0eb63daef41ecbcf55f5635",
+      "consumer_sha256": "3e826acc599951f7d10cbd887ed3b62148eb55e4320ad9ce38817c61ed23c732",
+      "input_files": [
+        {
+          "path": "pure-config-f64.txt",
+          "byte_length": 1310,
+          "sha256": "5f952bec48aa3d9e5151013608b8dd277c9db28e245e7743d2b172c4ce6f9473"
+        },
+        {
+          "path": "coupled-config.txt",
+          "byte_length": 1473,
+          "sha256": "d5bf2572acf8c40d48244bc0239eb65955b707a33e6d32fc3da3906790fda19a"
+        }
+      ],
+      "required_completion_markers": [
+        "RUN-COMPLETED: model=model.NPhaseContactAngle macro_step=1",
+        "RUN-COMPLETED: model=model.NPhaseImbDemContactAngle macro_step=1"
+      ],
+      "process_exit_code": 0,
+      "state": "passed"
+    }
+  ]
+}

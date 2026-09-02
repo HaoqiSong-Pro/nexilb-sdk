@@ -1,0 +1,13 @@
+{
+  "$schema": "urn:nexilb:schema:secondary-case-config:1.1",
+  "schema_version": "1.1",
+  "case_id": "CASE-PURE-COUPLED-DEGENERATION",
+  "contract_state": {"implementation": "c11_consumer_executable", "runtime": "compatible_runtime_config_path_lifecycle_available", "physical_acceptance": "not_evaluated"},
+  "model_configs": [
+    {"config_id": "config.fixed_body.pure", "model_id": "model.NPhaseContactAngle", "configuration_status": "materialized_case_root_relative"},
+    {"config_id": "config.fixed_body.coupled", "model_id": "model.NPhaseImbDemContactAngle", "configuration_status": "materialized_case_root_relative"}
+  ],
+  "semantic_requirements": ["REQ-CONFIGURATION-TWO-INDEPENDENT-DOCUMENTS", "REQ-FIXED-BODY-GEOMETRY-CORRESPONDENCE", "REQ-COUPLED-ONE-FIXED-PRESCRIBED-BODY", "REQ-NO-ZERO-PARTICLE-DEGENERATION-CLAIM", "REQ-PHYSICAL-ACCEPTANCE-NOT-EVALUATED"],
+  "input_asset_ids": ["asset.correspondence.2d.pure_config", "asset.correspondence.2d.coupled_config", "asset.correspondence.2d.fixed_particle", "asset.correspondence.2d.trajectory", "asset.correspondence.3d.pure_config", "asset.correspondence.3d.coupled_config", "asset.correspondence.3d.fixed_particle", "asset.correspondence.3d.trajectory"],
+  "optional_slots": {"input_transaction": "null_in_current_runtime", "validation": "available_in_current_runtime", "snapshot": "available_in_current_runtime", "checkpoint_restart": "available_in_current_runtime"}
+}

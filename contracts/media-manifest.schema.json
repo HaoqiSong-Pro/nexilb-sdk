@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema", "$id": "urn:nexilb:schema:media-manifest:1.0",
+  "type": "object", "additionalProperties": false,
+  "required": ["$schema", "schema_version", "case_id", "media_status", "gate_status", "source_run_manifest_status", "verification_result_status", "artifacts"],
+  "properties": {
+    "$schema": {"const": "urn:nexilb:schema:media-manifest:1.0"}, "schema_version": {"const": "1.0"}, "case_id": {"enum": ["CASE-NPHASE-WETTING-MINIMAL", "CASE-IMB-COUPLING-MINIMAL", "CASE-DEM-CONTACT-RESTART", "CASE-PURE-COUPLED-DEGENERATION"]},
+    "media_status": {"const": "not_generated"}, "gate_status": {"const": "verification_not_evaluated"}, "source_run_manifest_status": {"const": "not_available"}, "verification_result_status": {"const": "not_available"}, "artifacts": {"type": "array", "maxItems": 0}
+  }
+}

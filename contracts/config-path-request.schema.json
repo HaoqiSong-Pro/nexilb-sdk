@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:nexilb:schema:config-path-request:1.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["config_path"],
+  "properties": {
+    "config_path": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!/)(?![A-Za-z]:)(?!.*(?:^|/)\\.\\.?(?:/|$))(?!.*//)(?!.*\\\\)[^\\u0000-\\u001f\"]+$"
+    }
+  }
+}

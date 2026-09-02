@@ -1,0 +1,2 @@
+{"$schema":"urn:nexilb:schema:case-variant-matrix:1.0","state":"contract_only_runtime_unavailable","variants":[{"variant_id":"2d-f32","dimension":2,"precision":"f32","build_type":"Release","runtime_state":"runtime_unavailable"},{"variant_id":"2d-f32","dimension":2,"precision":"f32","build_type":"Release","runtime_state":"runtime_unavailable"},{"variant_id":"3d-f32","dimension":3,"precision":"f32","build_type":"Release","runtime_state":"runtime_unavailable"},{"variant_id":"3d-f64","dimension":3,"precision":"f64","build_type":"Release","runtime_state":"runtime_unavailable"}]}
+

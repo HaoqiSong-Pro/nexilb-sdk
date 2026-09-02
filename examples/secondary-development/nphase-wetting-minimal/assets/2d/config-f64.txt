@@ -1,0 +1,61 @@
+case = contact_angle
+finalStep = 1
+outputInterval = 1
+reportInterval = 1
+velocityConvergenceTolerance = 0.0001
+checkpointInterval = 1
+checkpointCopy = 0
+N = [190, 95, 1]
+referenceLength = 38
+gravity = [0, 0, 0]
+mobility = 1.5
+interfaceWidth = 5
+rhoRatio = 1000
+muRatio = 1000
+tauH = 0.3
+sigma = 0.01
+benchmarkCase = planar_compound_wetting
+phaseCount = 3
+phaseDensity = [1000, 500, 1]
+phaseDynamicViscosity = [100, 50, 0.1]
+surfaceTensionPairs = [0.01, 0.01, 0.01]
+interfaceThicknessPairs = [5, 5, 5]
+referenceDensity = 1
+phaseCollision = natural_mrt
+flowCollision = natural_mrt_full_second_order
+bodyForcePolicy = none
+phaseExcursionWarningThreshold = 0.001
+phaseMassCorrection = false
+wettingEnabled = true
+contactAngleToReference = [75, 90]
+wettingWallSides = [y-]
+wettingNewtonTolerance = 1e-11
+wettingNewtonMaxIterations = 20
+wettingLineSearchMinimum = 0.0009765625
+wallGeometryMode = external
+geometry = [
+  {
+    type = "circle"
+    center = [95.5, 0.5, 0]
+    radius = 38
+    id = 0
+  }
+]
+boundary = [
+  {
+    side = "x-"
+    type = "periodic"
+  },
+  {
+    side = "x+"
+    type = "periodic"
+  },
+  {
+    side = "y-"
+    type = "wall"
+  },
+  {
+    side = "y+"
+    type = "wall"
+  }
+]

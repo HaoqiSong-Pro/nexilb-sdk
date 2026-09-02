@@ -1,0 +1,29 @@
+{
+  "$schema": "urn:nexilb:schema:catalog-descriptor:0.2",
+  "descriptor_schema_version": {"major": 0, "minor": 2},
+  "entity_id": "chain.NPhaseImbDemContactAngle",
+  "kind": {"id": "model_chain", "code": 14},
+  "descriptor_revision": {"major": 0, "minor": 2},
+  "public_name": "NPhaseImbDemContactAngle chain",
+  "summary": "Catalog group for the N-phase IMB-DEM contact-angle model available through compatible CUDA runtimes.",
+  "visibility": "public",
+  "scope": "library_static",
+  "status": {
+    "contract": "runtime_contract",
+    "implementation": "present_in_controlled_runtime",
+    "runtime": "available_with_compatible_runtime",
+    "verification": "covered_by_cuda_runtime_tests"
+  },
+  "availability_reason_id": "status.controlled_runtime.available",
+  "schema_ref": {"state": "runtime_descriptor_schema_available"},
+  "relations": [
+    {"relation_id": "parallel_with", "target_id": "chain.nexilb.native"},
+    {"relation_id": "parallel_with", "target_id": "chain.NPhaseContactAngle"}
+  ],
+  "blocking_requirement_ids": [],
+  "evidence_ids": ["test.runtime.coupled_dynamic_load"],
+  "payload": {
+    "member_inventory_state": "complete_for_contract",
+    "members": ["model.NPhaseImbDemContactAngle"]
+  }
+}

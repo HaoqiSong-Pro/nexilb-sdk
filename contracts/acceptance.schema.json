@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema", "$id": "urn:nexilb:schema:acceptance:1.0",
+  "type": "object", "additionalProperties": false,
+  "required": ["$schema", "schema_version", "case_id", "verification_status", "criteria"],
+  "properties": {
+    "$schema": {"const": "urn:nexilb:schema:acceptance:1.0"}, "schema_version": {"const": "1.0"}, "case_id": {"enum": ["CASE-NPHASE-WETTING-MINIMAL", "CASE-IMB-COUPLING-MINIMAL", "CASE-DEM-CONTACT-RESTART", "CASE-PURE-COUPLED-DEGENERATION"]},
+    "verification_status": {"const": "verification_not_evaluated"},
+    "criteria": {"type": "array", "minItems": 1, "items": {"type": "object", "additionalProperties": false, "required": ["criterion_id", "metric_id", "selector_requirement", "alignment_requirement", "comparator_status", "tolerance_status", "reference_artifact_id", "evidence_ids", "evaluation_status"], "properties": {
+      "criterion_id": {"type": "string", "pattern": "^criterion\\.[a-z0-9_.-]+$"}, "metric_id": {"type": "string", "pattern": "^metric\\.[a-z0-9_.-]+$"},
+      "selector_requirement": {"type": "string", "minLength": 1}, "alignment_requirement": {"type": "string", "minLength": 1},
+      "comparator_status": {"const": "approval_required"}, "tolerance_status": {"const": "not_specified"},
+      "reference_artifact_id": {"type": "string", "pattern": "^reference\\.[a-z0-9_.-]+$"},
+      "evidence_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^(TST|VAL)-[A-Z0-9]+(-[A-Z0-9]+)*$"}},
+      "evaluation_status": {"const": "verification_not_evaluated"}
+    }}}
+  }
+}

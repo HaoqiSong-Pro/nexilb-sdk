@@ -1,0 +1,86 @@
+case = two_phase_imb
+finalStep = 3000
+outputInterval = 3000
+reportInterval = 250
+checkpointInterval = 3000
+checkpointCopy = 0
+
+N = [102, 27, 102]
+referenceLength = 5
+referenceVelocity = 0.0001
+gravity = [3.2e-7, 0, 0]
+mobility = 0.02
+interfaceWidth = 4
+initialInterfaceY = 12.5
+rhoH = 1
+rhoL = 1
+nuH = 0.16666666666666667
+nuL = 0.16666666666666667
+sigma = 0.01
+
+phaseCount = 2
+phaseDensity = [1, 1]
+phaseDynamicViscosity = [0.16666666666666667, 0.16666666666666667]
+surfaceTensionPairs = [0.01]
+interfaceThicknessPairs = [4]
+referenceDensity = 1
+phaseCollision = weighted_mrt
+flowCollision = weighted_mrt
+bodyForcePolicy = density_times_acceleration
+phaseExcursionWarningThreshold = 1e-8
+phaseMassCorrection = false
+
+imbEnabled = true
+imbMaxBodiesPerCell = 1
+imbTrajectoryFile = "trajectory_N5.csv"
+imbTrajectoryEndPolicy = "hold_last"
+immersedBodies = [
+  {
+    id = 0
+    geometryId = 0
+    motion = "prescribed"
+    center = [50.25, 6.75, 50.25]
+    orientation = [1, 0, 0, 0]
+    velocity = [0, 0, 0]
+    angularVelocity = [0, 0, 0]
+  }
+]
+
+geometry = [
+  {
+    type = "sphere"
+    center = [50.25, 6.75, 50.25]
+    radius = 2.5
+    id = 0
+    solid = true
+    deltaPhi = 0
+  }
+]
+
+boundary = [
+  {
+    side = "x-"
+    type = "periodic"
+  },
+  {
+    side = "x+"
+    type = "periodic"
+  },
+  {
+    side = "y-"
+    type = "wall"
+  },
+  {
+    side = "y+"
+    type = "wall"
+  },
+  {
+    side = "z-"
+    type = "periodic"
+  },
+  {
+    side = "z+"
+    type = "periodic"
+  }
+]
+

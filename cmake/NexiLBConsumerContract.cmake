@@ -1,0 +1,25 @@
+include_guard(GLOBAL)
+
+function(nexilb_assert_verified_runtime_inputs)
+  set(one_value_args MANIFEST SBOM PROVENANCE DEPENDENCY_ALLOWLIST)
+  cmake_parse_arguments(ARG "" "${one_value_args}" "" ${ARGN})
+  foreach(name IN LISTS one_value_args)
+    if(NOT DEFINED ARG_${name} OR ARG_${name} STREQUAL "")
+      message(FATAL_ERROR "nexilb_assert_verified_runtime_inputs requires ${name}")
+    endif()
+    if(NOT EXISTS "${ARG_${name}}" OR IS_DIRECTORY "${ARG_${name}}" OR
+       IS_SYMLINK "${ARG_${name}}")
+      message(FATAL_ERROR "NexiLB verified input is missing or unsafe: ${name}")
+    endif()
+  endforeach()
+endfunction()
+
+function(nexilb_assert_consumer_abi ABI_MAJOR API_VERSION)
+  if(NOT ABI_MAJOR STREQUAL "1")
+    message(FATAL_ERROR "NexiLB consumer requires ABI major 1")
+  endif()
+  if(NOT API_VERSION STREQUAL "1")
+    message(FATAL_ERROR "NexiLB consumer requires API table v1")
+  endif()
+endfunction()
+

@@ -1,0 +1,9 @@
+{
+  "$schema":"urn:nexilb:schema:secondary-case-reference:1.1","schema_version":"1.1","case_id":"CASE-PURE-COUPLED-DEGENERATION","reference_status":"not_evaluated",
+  "references":[
+    {"artifact_id":"reference.correspondence.geometry","role":"planned embedded-solid versus one-fixed-prescribed-body geometry mapping","status":"planned_not_approved","required_evidence_ids":["VAL-CORRESPONDENCE-GEOMETRY"]},
+    {"artifact_id":"reference.correspondence.field_descriptors","role":"planned common field descriptor mapping","status":"planned_not_approved","required_evidence_ids":["VAL-CORRESPONDENCE-FIELD-DESCRIPTORS"]},
+    {"artifact_id":"reference.correspondence.common_outputs","role":"planned common semantic fields and diagnostics reference after snapshot slots exist","status":"planned_not_approved","required_evidence_ids":["VAL-CORRESPONDENCE-COMMON-FIELDS","VAL-CORRESPONDENCE-COMMON-DIAGNOSTICS"]},
+    {"artifact_id":"reference.correspondence.scope","role":"planned evidence that comparison is representation correspondence, not zero-particle degeneration equivalence","status":"planned_not_approved","required_evidence_ids":["VAL-CORRESPONDENCE-SCOPE"]}
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema", "$id": "urn:nexilb:schema:run-manifest:1.0",
+  "type": "object", "additionalProperties": false,
+  "required": ["$schema", "schema_version", "case_id", "model_ids", "implementation_status", "execution_status", "stop_reason", "release_bindings_status", "device_instance_status", "outputs"],
+  "properties": {
+    "$schema": {"const": "urn:nexilb:schema:run-manifest:1.0"}, "schema_version": {"const": "1.0"}, "case_id": {"enum": ["CASE-NPHASE-WETTING-MINIMAL", "CASE-IMB-COUPLING-MINIMAL", "CASE-DEM-CONTACT-RESTART", "CASE-PURE-COUPLED-DEGENERATION"]},
+    "model_ids": {"type": "array", "minItems": 1, "maxItems": 2, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "implementation_status": {"const": "implementation_not_present"}, "execution_status": {"const": "runtime_unavailable"}, "stop_reason": {"const": "implementation_not_present"},
+    "release_bindings_status": {"const": "not_available"}, "device_instance_status": {"const": "not_recorded"}, "outputs": {"type": "array", "maxItems": 0}
+  },
+  "allOf": [
+    {"if": {"properties": {"case_id": {"const": "CASE-NPHASE-WETTING-MINIMAL"}}, "required": ["case_id"]}, "then": {"properties": {"model_ids": {"const": ["model.NPhaseContactAngle"]}}}},
+    {"if": {"properties": {"case_id": {"const": "CASE-IMB-COUPLING-MINIMAL"}}, "required": ["case_id"]}, "then": {"properties": {"model_ids": {"const": ["model.NPhaseImbDemContactAngle"]}}}},
+    {"if": {"properties": {"case_id": {"const": "CASE-DEM-CONTACT-RESTART"}}, "required": ["case_id"]}, "then": {"properties": {"model_ids": {"const": ["model.NPhaseImbDemContactAngle"]}}}},
+    {"if": {"properties": {"case_id": {"const": "CASE-PURE-COUPLED-DEGENERATION"}}, "required": ["case_id"]}, "then": {"properties": {"model_ids": {"const": ["model.NPhaseContactAngle", "model.NPhaseImbDemContactAngle"]}}}}
+  ]
+}

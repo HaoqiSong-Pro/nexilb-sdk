@@ -1,0 +1,56 @@
+@PACKAGE_INIT@
+
+set(NexiLB_SDK_VERSION "@PROJECT_VERSION@")
+set(NexiLB_ABI_MAJOR 1)
+set(NexiLB_API_VERSION 1)
+set(NexiLB_RUNTIME_MANIFEST
+  "${PACKAGE_PREFIX_DIR}/@CMAKE_INSTALL_DATADIR@/nexilb/NexiLBRuntimeManifest.json")
+set(NexiLB_ABI_LAYOUT_BASELINE
+  "${PACKAGE_PREFIX_DIR}/@CMAKE_INSTALL_DATADIR@/nexilb/abi/v1/nexilb_abi_layout_64.txt")
+set(NexiLB_CATALOG_BUNDLE
+  "${PACKAGE_PREFIX_DIR}/@CMAKE_INSTALL_DATADIR@/nexilb/catalog/NexiLBCatalogBundle.json")
+set(NexiLB_EXPECTED_PUBLIC_HEADER
+  "${PACKAGE_PREFIX_DIR}/@CMAKE_INSTALL_INCLUDEDIR@/nexilb/nexilb.h")
+set(NexiLB_EXPECTED_PUBLIC_CPP_HEADER
+  "${PACKAGE_PREFIX_DIR}/@CMAKE_INSTALL_INCLUDEDIR@/nexilb/nexilb.hpp")
+if(WIN32)
+  set(NexiLB_PE_DEPENDENCY_SNAPSHOT
+    "${PACKAGE_PREFIX_DIR}/@CMAKE_INSTALL_DATADIR@/nexilb/NexiLBPeDependencies.txt")
+endif()
+
+include("${CMAKE_CURRENT_LIST_DIR}/NexiLBTargets.cmake")
+foreach(_nexilb_required_target IN ITEMS
+    NexiLB::Runtime NexiLB::CaseVerify NexiLB::CaseTest)
+  if(NOT TARGET "${_nexilb_required_target}")
+    set(NexiLB_FOUND FALSE)
+    set(NexiLB_NOT_FOUND_MESSAGE
+      "Verified NexiLB package is missing ${_nexilb_required_target}")
+    return()
+  endif()
+  get_target_property(_nexilb_is_imported
+    "${_nexilb_required_target}" IMPORTED)
+  if(NOT _nexilb_is_imported)
+    set(NexiLB_FOUND FALSE)
+    set(NexiLB_NOT_FOUND_MESSAGE
+      "${_nexilb_required_target} must be a read-only imported target")
+    return()
+  endif()
+endforeach()
+get_target_property(_nexilb_runtime_type NexiLB::Runtime TYPE)
+get_target_property(_nexilb_verify_type NexiLB::CaseVerify TYPE)
+get_target_property(_nexilb_test_type NexiLB::CaseTest TYPE)
+if(NOT _nexilb_runtime_type STREQUAL "SHARED_LIBRARY" OR
+   NOT _nexilb_verify_type STREQUAL "EXECUTABLE" OR
+   NOT _nexilb_test_type STREQUAL "EXECUTABLE")
+  set(NexiLB_FOUND FALSE)
+  set(NexiLB_NOT_FOUND_MESSAGE
+    "NexiLB imported target kinds do not match the runtime contract")
+  return()
+endif()
+include("${CMAKE_CURRENT_LIST_DIR}/NexiLBVerifyPackage.cmake")
+_nexilb_verify_package_manifest("${NexiLB_RUNTIME_MANIFEST}")
+message(STATUS
+  "NexiLB package bytes match the release manifest and SHA-256 inventory")
+include("${CMAKE_CURRENT_LIST_DIR}/NexiLBStageRuntime.cmake")
+
+check_required_components(NexiLB)

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:nexilb:schema:three-chain-consumption:1.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "schema_version", "state", "chains"],
+  "properties": {
+    "$schema": {"const": "urn:nexilb:schema:three-chain-consumption:1.0"},
+    "schema_version": {"const": "1.0"},
+    "state": {"const": "contract_only_runtime_unavailable"},
+    "chains": {"type": "array", "minItems": 3, "maxItems": 3}
+  }
+}
+

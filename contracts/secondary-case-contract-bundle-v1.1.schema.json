@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:nexilb:schema:secondary-case-contract-bundle:1.1",
+  "title": "NexiLB executable secondary-case contract bundle v1.1",
+  "description": "Adds executable-consumer and runtime-lifecycle states without changing the frozen contract-only v1.0 schemas. Physical acceptance remains explicitly not_evaluated.",
+  "oneOf": [
+    {"$ref": "#/$defs/caseConfig"},
+    {"$ref": "#/$defs/caseManifest"},
+    {"$ref": "#/$defs/variants"},
+    {"$ref": "#/$defs/runManifest"},
+    {"$ref": "#/$defs/verificationResult"},
+    {"$ref": "#/$defs/referenceManifest"},
+    {"$ref": "#/$defs/acceptance"},
+    {"$ref": "#/$defs/assetManifest"}
+  ],
+  "$defs": {
+    "caseId": {"enum": ["CASE-NPHASE-WETTING-MINIMAL", "CASE-IMB-COUPLING-MINIMAL", "CASE-DEM-CONTACT-RESTART", "CASE-PURE-COUPLED-DEGENERATION"]},
+    "path": {"type": "string", "minLength": 1, "pattern": "^[A-Za-z0-9._/-]+$", "allOf": [{"not": {"pattern": "^[A-Za-z]:"}}, {"not": {"pattern": "^/"}}, {"not": {"pattern": "(^|/)\\.\\.(/|$)"}}, {"not": {"pattern": "//"}}]},
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "state": {
+      "type": "object", "additionalProperties": false,
+      "required": ["implementation", "runtime", "physical_acceptance"],
+      "properties": {
+        "implementation": {"const": "c11_consumer_executable"},
+        "runtime": {"const": "compatible_runtime_config_path_lifecycle_available"},
+        "physical_acceptance": {"const": "not_evaluated"}
+      }
+    },
+    "optionalSlots": {
+      "type": "object", "additionalProperties": false,
+      "required": ["input_transaction", "validation", "snapshot", "checkpoint_restart"],
+      "properties": {
+        "input_transaction": {"const": "null_in_current_runtime"},
+        "validation": {"const": "available_in_current_runtime"},
+        "snapshot": {"const": "available_in_current_runtime"},
+        "checkpoint_restart": {"const": "available_in_current_runtime"}
+      }
+    },
+    "caseConfig": {
+      "type": "object", "additionalProperties": false,
+      "required": ["$schema", "schema_version", "case_id", "contract_state", "model_configs", "semantic_requirements", "input_asset_ids", "optional_slots"],
+      "properties": {
+        "$schema": {"const": "urn:nexilb:schema:secondary-case-config:1.1"},
+        "schema_version": {"const": "1.1"}, "case_id": {"$ref": "#/$defs/caseId"},
+        "contract_state": {"$ref": "#/$defs/state"},
+        "model_configs": {"type": "array", "minItems": 1, "items": {"type": "object", "additionalProperties": false, "required": ["config_id", "model_id", "configuration_status"], "properties": {"config_id": {"type": "string"}, "model_id": {"enum": ["model.NPhaseContactAngle", "model.NPhaseImbDemContactAngle"]}, "configuration_status": {"const": "materialized_case_root_relative"}}}},
+        "semantic_requirements": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^REQ-[A-Z0-9]+(-[A-Z0-9]+)*$"}},
+        "input_asset_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^asset\\.[a-z0-9_.-]+$"}},
+        "optional_slots": {"$ref": "#/$defs/optionalSlots"}
+      }
+    },
+    "caseManifest": {
+      "type": "object", "additionalProperties": false,
+      "required": ["$schema", "schema_version", "case_id", "model_ids", "contract_state", "objectives", "required_assets", "required_capabilities", "blocking_test_ids", "blocking_validation_ids", "paths", "unresolved_release_bindings"],
+      "properties": {
+        "$schema": {"const": "urn:nexilb:schema:secondary-case-manifest:1.1"}, "schema_version": {"const": "1.1"}, "case_id": {"$ref": "#/$defs/caseId"},
+        "model_ids": {"type": "array", "minItems": 1, "maxItems": 2, "uniqueItems": true, "items": {"enum": ["model.NPhaseContactAngle", "model.NPhaseImbDemContactAngle"]}},
+        "contract_state": {"$ref": "#/$defs/state"}, "objectives": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^objective\\.[a-z0-9_.-]+$"}},
+        "required_assets": {"type": "array", "minItems": 1, "items": {"type": "object", "additionalProperties": false, "required": ["asset_id", "role", "status"], "properties": {"asset_id": {"type": "string", "pattern": "^asset\\.[a-z0-9_.-]+$"}, "role": {"type": "string", "minLength": 1}, "status": {"const": "present_sha256_verified"}}}},
+        "required_capabilities": {"type": "array", "minItems": 5, "items": {"type": "object", "additionalProperties": false, "required": ["capability_id", "status"], "properties": {"capability_id": {"type": "string", "pattern": "^capability\\.[a-z0-9_.-]+$"}, "status": {"enum": ["available", "unavailable_null_slot"]}}}},
+        "blocking_test_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^TST-[A-Z0-9]+(-[A-Z0-9]+)*$"}},
+        "blocking_validation_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^VAL-[A-Z0-9]+(-[A-Z0-9]+)*$"}},
+        "paths": {"type": "object", "additionalProperties": false, "required": ["case_config", "variants", "asset_manifest", "acceptance", "reference_manifest", "run_manifest", "verification_result", "media_manifest"], "properties": {"case_config": {"$ref": "#/$defs/path"}, "variants": {"$ref": "#/$defs/path"}, "asset_manifest": {"$ref": "#/$defs/path"}, "acceptance": {"$ref": "#/$defs/path"}, "reference_manifest": {"$ref": "#/$defs/path"}, "run_manifest": {"$ref": "#/$defs/path"}, "verification_result": {"$ref": "#/$defs/path"}, "media_manifest": {"$ref": "#/$defs/path"}}},
+        "unresolved_release_bindings": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string"}}
+      }
+    },
+    "variants": {
+      "type": "object", "additionalProperties": false,
+      "required": ["$schema", "schema_version", "case_id", "implementation_state", "variants"],
+      "properties": {"$schema": {"const": "urn:nexilb:schema:secondary-case-variants:1.1"}, "schema_version": {"const": "1.1"}, "case_id": {"$ref": "#/$defs/caseId"}, "implementation_state": {"const": "c11_consumer_executable"}, "variants": {"type": "array", "minItems": 4, "maxItems": 4, "items": {"type": "object", "additionalProperties": false, "required": ["variant_id", "dimension", "precision", "build_type", "config_paths", "runtime_state", "physical_acceptance"], "properties": {"variant_id": {"type": "string", "pattern": "^[a-z0-9.-]+$"}, "dimension": {"enum": [2, 3]}, "precision": {"enum": ["f32", "f64"]}, "build_type": {"const": "Release"}, "config_paths": {"type": "array", "minItems": 1, "maxItems": 2, "uniqueItems": true, "items": {"$ref": "#/$defs/path"}}, "runtime_state": {"const": "compatible_runtime_config_path_lifecycle_available"}, "physical_acceptance": {"const": "not_evaluated"}}}}}
+    },
+    "runManifest": {
+      "type": "object", "additionalProperties": false,
+      "required": ["$schema", "schema_version", "case_id", "model_ids", "implementation_status", "runtime_status", "execution_status", "reason", "release_bindings_status", "device_instance_status", "outputs"],
+      "properties": {"$schema": {"const": "urn:nexilb:schema:secondary-case-run:1.1"}, "schema_version": {"const": "1.1"}, "case_id": {"$ref": "#/$defs/caseId"}, "model_ids": {"type": "array", "minItems": 1, "maxItems": 2, "uniqueItems": true, "items": {"type": "string"}}, "implementation_status": {"const": "c11_consumer_executable"}, "runtime_status": {"const": "compatible_runtime_config_path_lifecycle_available"}, "execution_status": {"const": "runtime_lifecycle_available"}, "reason": {"const": "physical_acceptance_not_evaluated"}, "release_bindings_status": {"const": "unresolved"}, "device_instance_status": {"const": "not_recorded"}, "outputs": {"type": "array", "maxItems": 0}}
+    },
+    "verificationResult": {
+      "type": "object", "additionalProperties": false,
+      "required": ["$schema", "schema_version", "case_id", "verification_status", "reason", "criteria_results"],
+      "properties": {"$schema": {"const": "urn:nexilb:schema:secondary-case-verification:1.1"}, "schema_version": {"const": "1.1"}, "case_id": {"$ref": "#/$defs/caseId"}, "verification_status": {"const": "not_evaluated"}, "reason": {"const": "no_approved_run_reference_or_physical_evidence"}, "criteria_results": {"type": "array", "maxItems": 0}}
+    },
+    "referenceManifest": {
+      "type": "object", "additionalProperties": false,
+      "required": ["$schema", "schema_version", "case_id", "reference_status", "references"],
+      "properties": {"$schema": {"const": "urn:nexilb:schema:secondary-case-reference:1.1"}, "schema_version": {"const": "1.1"}, "case_id": {"$ref": "#/$defs/caseId"}, "reference_status": {"const": "not_evaluated"}, "references": {"type": "array", "minItems": 1, "items": {"type": "object", "additionalProperties": false, "required": ["artifact_id", "role", "status", "required_evidence_ids"], "properties": {"artifact_id": {"type": "string"}, "role": {"type": "string"}, "status": {"const": "planned_not_approved"}, "required_evidence_ids": {"type": "array", "minItems": 1, "items": {"type": "string"}}}}}
+    },
+    "acceptance": {
+      "type": "object", "additionalProperties": false,
+      "required": ["$schema", "schema_version", "case_id", "verification_status", "criteria"],
+      "properties": {"$schema": {"const": "urn:nexilb:schema:secondary-case-acceptance:1.1"}, "schema_version": {"const": "1.1"}, "case_id": {"$ref": "#/$defs/caseId"}, "verification_status": {"const": "not_evaluated"}, "criteria": {"type": "array", "minItems": 1, "items": {"type": "object", "additionalProperties": false, "required": ["criterion_id", "metric_id", "selector_requirement", "alignment_requirement", "comparator_status", "tolerance_status", "reference_artifact_id", "evidence_ids", "evaluation_status"], "properties": {"criterion_id": {"type": "string"}, "metric_id": {"type": "string"}, "selector_requirement": {"type": "string"}, "alignment_requirement": {"type": "string"}, "comparator_status": {"const": "approval_required"}, "tolerance_status": {"const": "not_approved"}, "reference_artifact_id": {"type": "string"}, "evidence_ids": {"type": "array", "minItems": 1, "items": {"type": "string"}}, "evaluation_status": {"const": "not_evaluated"}}}}}
+    },
+    "assetManifest": {
+      "type": "object", "additionalProperties": false,
+      "required": ["$schema", "schema_version", "case_id", "hash_algorithm", "asset_root", "assets"],
+      "properties": {"$schema": {"const": "urn:nexilb:schema:secondary-case-assets:1.1"}, "schema_version": {"const": "1.1"}, "case_id": {"$ref": "#/$defs/caseId"}, "hash_algorithm": {"const": "sha256"}, "asset_root": {"const": "assets"}, "assets": {"type": "array", "minItems": 2, "uniqueItems": true, "items": {"type": "object", "additionalProperties": false, "required": ["path", "dimension", "role", "size_bytes", "sha256"], "properties": {"path": {"$ref": "#/$defs/path"}, "dimension": {"enum": [2, 3]}, "role": {"enum": ["runtime_config", "particle_fixture", "prescribed_trajectory"]}, "size_bytes": {"type": "integer", "minimum": 1}, "sha256": {"$ref": "#/$defs/sha256"}}}}}
+    }
+  }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "urn:nexilb:schema:secondary-case-manifest:1.1", "schema_version": "1.1",
+  "case_id": "CASE-NPHASE-WETTING-MINIMAL", "model_ids": ["model.NPhaseContactAngle"],
+  "contract_state": {"implementation": "c11_consumer_executable", "runtime": "compatible_runtime_config_path_lifecycle_available", "physical_acceptance": "not_evaluated"},
+  "objectives": ["objective.nphase.three_phase_config", "objective.wetting.boundary_and_embedded_solid", "objective.dimension_precision_matrix"],
+  "required_assets": [
+    {"asset_id": "asset.nphase.2d.config", "role": "2D three-phase wetting runtime configuration", "status": "present_sha256_verified"},
+    {"asset_id": "asset.nphase.3d.config", "role": "3D three-phase wetting runtime configuration", "status": "present_sha256_verified"}
+  ],
+  "required_capabilities": [
+    {"capability_id": "capability.config_path.lifecycle", "status": "available"},
+    {"capability_id": "capability.input.transaction", "status": "unavailable_null_slot"},
+    {"capability_id": "capability.validation.model_and_geometry", "status": "available"},
+    {"capability_id": "capability.snapshot.phase_fields", "status": "available"},
+    {"capability_id": "capability.checkpoint.restart", "status": "available"}
+  ],
+  "blocking_test_ids": ["TST-NPHASE-2D-F32", "TST-NPHASE-2D-F64", "TST-NPHASE-3D-F32", "TST-NPHASE-3D-F64"],
+  "blocking_validation_ids": ["VAL-NPHASE-CONSERVATION", "VAL-WETTING-CONTACT-ANGLE", "VAL-NPHASE-RESTART-CONTINUITY"],
+  "paths": {"case_config": "case.json", "variants": "variants.json", "asset_manifest": "asset-manifest.json", "acceptance": "expected/acceptance.json", "reference_manifest": "expected/reference-manifest.json", "run_manifest": "contract-state/run-manifest.json", "verification_result": "contract-state/verification-result.json", "media_manifest": "contract-state/media-manifest.json"},
+  "unresolved_release_bindings": ["runtime_identity", "static_catalog_digest", "effective_catalog_digest", "hardware_matrix_id", "driver_matrix_id", "approved_run_digests", "approved_reference_digests", "license_and_publication_rights"]
+}

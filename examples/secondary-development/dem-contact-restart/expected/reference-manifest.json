@@ -1,0 +1,9 @@
+{
+  "$schema":"urn:nexilb:schema:secondary-case-reference:1.1","schema_version":"1.1","case_id":"CASE-DEM-CONTACT-RESTART","reference_status":"not_evaluated",
+  "references":[
+    {"artifact_id":"reference.dem.fixed_particle","role":"planned exactly-one-fixed-particle state reference","status":"planned_not_approved","required_evidence_ids":["VAL-DEM-FIXED-PARTICLE-STATE"]},
+    {"artifact_id":"reference.dem.wall_contact_array","role":"planned wall-contact array reference after snapshot contact slots exist","status":"planned_not_approved","required_evidence_ids":["VAL-DEM-WALL-CONTACT-ARRAY"]},
+    {"artifact_id":"reference.dem.checkpoint","role":"planned checkpoint metadata reference after checkpoint slots exist","status":"planned_not_approved","required_evidence_ids":["VAL-DEM-CHECKPOINT-METADATA"]},
+    {"artifact_id":"reference.dem.restart","role":"planned continuous-versus-resume reference; no particle-particle contact is claimed","status":"planned_not_approved","required_evidence_ids":["VAL-DEM-RESTART-CONTINUITY"]}
+  ]
+}

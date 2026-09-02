@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:nexilb:schema:case-variant-matrix:1.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "schema_version", "case_id", "state", "variants"],
+  "properties": {
+    "$schema": {"const": "urn:nexilb:schema:case-variant-matrix:1.0"},
+    "schema_version": {"const": "1.0"},
+    "case_id": {"pattern": "^CASE-[A-Z0-9]+(-[A-Z0-9]+)*$"},
+    "state": {"const": "contract_only_runtime_unavailable"},
+    "variants": {
+      "type": "array", "minItems": 4, "maxItems": 4,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["variant_id", "dimension", "precision", "build_type", "runtime_state"],
+        "properties": {
+          "variant_id": {"pattern": "^[a-z0-9.-]+$"},
+          "dimension": {"enum": [2, 3]},
+          "precision": {"enum": ["f32", "f64"]},
+          "build_type": {"const": "Release"},
+          "runtime_state": {"const": "runtime_unavailable"}
+        }
+      }
+    }
+  }
+}
+

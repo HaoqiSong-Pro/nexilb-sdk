@@ -1,0 +1,52 @@
+{
+  "$schema": "urn:nexilb:schema:catalog-descriptor:0.2",
+  "descriptor_schema_version": {
+    "major": 0,
+    "minor": 2
+  },
+  "entity_id": "CASE-IMB-COUPLING-MINIMAL",
+  "kind": {
+    "id": "case",
+    "code": 17
+  },
+  "descriptor_revision": {
+    "major": 0,
+    "minor": 2
+  },
+  "public_name": "IMB coupling minimal secondary-development contract",
+  "summary": "Blocked contract for the IMB coupling secondary-development case; no solver implementation or runtime evidence is present.",
+  "visibility": "public",
+  "scope": "library_static",
+  "status": {
+    "contract": "draft_contract",
+    "implementation": "not_present",
+    "runtime": "unavailable",
+    "verification": "not_evaluated_by_this_artifact"
+  },
+  "availability_reason_id": "status.contract_prototype.no_solver",
+  "schema_ref": {
+    "state": "unavailable"
+  },
+  "relations": [
+    {
+      "relation_id": "member_of",
+      "target_id": "chain.NPhaseImbDemContactAngle"
+    },
+    {
+      "relation_id": "uses_model",
+      "target_id": "model.NPhaseImbDemContactAngle"
+    }
+  ],
+  "blocking_requirement_ids": [
+    "REQ-PRIVATE-MODEL-ADAPTER",
+    "REQ-IMB-DEM-VALIDATION-EVIDENCE"
+  ],
+  "evidence_ids": [],
+  "payload": {
+    "creatable": false,
+    "contract_state": "blocked",
+    "model_ids": [
+      "model.NPhaseImbDemContactAngle"
+    ]
+  }
+}

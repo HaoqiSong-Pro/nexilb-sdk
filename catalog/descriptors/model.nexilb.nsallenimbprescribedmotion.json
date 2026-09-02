@@ -1,0 +1,38 @@
+{
+  "$schema": "urn:nexilb:schema:catalog-descriptor:0.2",
+  "descriptor_schema_version": {"major": 0, "minor": 2},
+  "entity_id": "model.nexilb.NSAllenImbPrescribedMotion",
+  "kind": {"id": "model", "code": 1},
+  "descriptor_revision": {"major": 0, "minor": 2},
+  "public_name": "NexiLB NSAllen IMB prescribed motion",
+  "summary": "Two-phase prescribed-motion immersed-boundary model available through compatible 2D CUDA runtimes; it does not provide DEM contact history.",
+  "visibility": "public",
+  "scope": "library_static",
+  "status": {
+    "contract": "runtime_contract",
+    "implementation": "present_in_controlled_runtime",
+    "runtime": "available_with_compatible_runtime",
+    "verification": "covered_by_cuda_runtime_tests"
+  },
+  "availability_reason_id": "status.controlled_runtime.dimension_limited",
+  "schema_ref": {"state": "runtime_descriptor_schema_available"},
+  "relations": [
+    {"relation_id": "member_of", "target_id": "chain.nexilb.native"}
+  ],
+  "blocking_requirement_ids": [],
+  "evidence_ids": [
+    "test.runtime.imb_capillary_relaxation",
+    "test.runtime.imb_sinking_cylinder",
+    "test.runtime.imb_three_particle_assembly"
+  ],
+  "payload": {
+    "creatable": true,
+    "declared_contract_features": [
+      "imb",
+      "prescribed_motion",
+      "restart_unavailable"
+    ],
+    "supported_dimensions": [2],
+    "supported_precisions": ["f32", "f64"]
+  }
+}

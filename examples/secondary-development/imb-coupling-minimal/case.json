@@ -1,0 +1,10 @@
+{
+  "$schema": "urn:nexilb:schema:secondary-case-config:1.1",
+  "schema_version": "1.1",
+  "case_id": "CASE-IMB-COUPLING-MINIMAL",
+  "contract_state": {"implementation": "c11_consumer_executable", "runtime": "compatible_runtime_config_path_lifecycle_available", "physical_acceptance": "not_evaluated"},
+  "model_configs": [{"config_id": "config.imb.fixed.prescribed", "model_id": "model.NPhaseImbDemContactAngle", "configuration_status": "materialized_case_root_relative"}],
+  "semantic_requirements": ["REQ-IMB-ONE-FIXED-PRESCRIBED-BODY", "REQ-IMB-TRAJECTORY-CASE-ROOT-RELATIVE", "REQ-PARTICLE-CSV-FIXTURE-NOT-TRANSACTION-SUBMITTED", "REQ-TIME-INTEGER-SYNCHRONIZATION", "REQ-PHYSICAL-ACCEPTANCE-NOT-EVALUATED"],
+  "input_asset_ids": ["asset.imb.2d.config", "asset.imb.2d.particle", "asset.imb.2d.trajectory", "asset.imb.3d.config", "asset.imb.3d.particle", "asset.imb.3d.trajectory"],
+  "optional_slots": {"input_transaction": "null_in_current_runtime", "validation": "available_in_current_runtime", "snapshot": "available_in_current_runtime", "checkpoint_restart": "available_in_current_runtime"}
+}

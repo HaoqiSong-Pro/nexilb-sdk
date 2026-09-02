@@ -1,0 +1,21 @@
+{
+  "$schema": "urn:nexilb:schema:secondary-case-manifest:1.1", "schema_version": "1.1",
+  "case_id": "CASE-PURE-COUPLED-DEGENERATION", "model_ids": ["model.NPhaseContactAngle", "model.NPhaseImbDemContactAngle"],
+  "contract_state": {"implementation": "c11_consumer_executable", "runtime": "compatible_runtime_config_path_lifecycle_available", "physical_acceptance": "not_evaluated"},
+  "objectives": ["objective.correspondence.fixed_body_representation", "objective.correspondence.two_independent_configs", "objective.correspondence.common_fields"],
+  "required_assets": [
+    {"asset_id": "asset.correspondence.2d.bundle", "role": "2D pure embedded-solid config and coupled one-fixed-body config/CSV pair", "status": "present_sha256_verified"},
+    {"asset_id": "asset.correspondence.3d.bundle", "role": "3D pure embedded-solid config and coupled one-fixed-body config/CSV pair", "status": "present_sha256_verified"}
+  ],
+  "required_capabilities": [
+    {"capability_id": "capability.config_path.lifecycle", "status": "available"},
+    {"capability_id": "capability.input.transaction", "status": "unavailable_null_slot"},
+    {"capability_id": "capability.validation.model_and_geometry", "status": "available"},
+    {"capability_id": "capability.snapshot.common_fields", "status": "available"},
+    {"capability_id": "capability.checkpoint.restart", "status": "available"}
+  ],
+  "blocking_test_ids": ["TST-CORRESPONDENCE-2D-F32", "TST-CORRESPONDENCE-2D-F64", "TST-CORRESPONDENCE-3D-F32", "TST-CORRESPONDENCE-3D-F64"],
+  "blocking_validation_ids": ["VAL-CORRESPONDENCE-GEOMETRY", "VAL-CORRESPONDENCE-COMMON-FIELDS", "VAL-CORRESPONDENCE-COMMON-DIAGNOSTICS"],
+  "paths": {"case_config": "case.json", "variants": "variants.json", "asset_manifest": "asset-manifest.json", "acceptance": "expected/acceptance.json", "reference_manifest": "expected/reference-manifest.json", "run_manifest": "contract-state/run-manifest.json", "verification_result": "contract-state/verification-result.json", "media_manifest": "contract-state/media-manifest.json"},
+  "unresolved_release_bindings": ["runtime_identity", "static_catalog_digest", "effective_catalog_digest", "hardware_matrix_id", "driver_matrix_id", "approved_run_digests", "approved_reference_digests", "license_and_publication_rights"]
+}

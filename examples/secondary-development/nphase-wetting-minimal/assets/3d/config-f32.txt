@@ -1,0 +1,84 @@
+case = contact_angle
+finalStep = 5000
+outputInterval = 5000
+reportInterval = 250
+velocityConvergenceTolerance = 0.005
+checkpointInterval = 2500
+checkpointCopy = 0
+
+# Active domain 100x60x100; NexiLB Domain consumes the ghost-inclusive N.
+N = [102, 62, 102]
+referenceLength = 25
+gravity = [0, 0, 0]
+mobility = 1.5
+interfaceWidth = 5
+rhoRatio = 1
+muRatio = 1
+tauH = 0.3
+sigma = 0.01
+
+benchmarkCase = janus_cylinder_wetting
+phaseCount = 3
+phaseDensity = [1, 1, 1]
+phaseDynamicViscosity = [0.1, 0.1, 0.1]
+surfaceTensionPairs = [0.01, 0.01, 0.01]
+interfaceThicknessPairs = [5, 5, 5]
+referenceDensity = 1
+phaseCollision = weighted_mrt
+flowCollision = weighted_mrt
+bodyForcePolicy = none
+phaseExcursionWarningThreshold = 0.001
+phaseMassCorrection = false
+
+wettingEnabled = true
+contactAngleToReference = [60, 90]
+wettingWallSides = []
+wettingNewtonTolerance = 1e-5
+wettingNewtonMaxIterations = 20
+wettingLineSearchMinimum = 0.0009765625
+wallGeometryMode = embedded
+
+geometry = [
+  {
+    type = "sphere"
+    center = [50.5, 13.625, 50.5]
+    radius = 25
+    id = 0
+  },
+  {
+    type = "cylinder"
+    center = [50.5, -86.375, 50.5]
+    length = [0, 0, 500]
+    radius = 100
+    id = 1
+    solid = true
+    solidRegion = inside
+  }
+]
+
+boundary = [
+  {
+    side = "x-"
+    type = "wall"
+  },
+  {
+    side = "x+"
+    type = "wall"
+  },
+  {
+    side = "y-"
+    type = "wall"
+  },
+  {
+    side = "y+"
+    type = "wall"
+  },
+  {
+    side = "z-"
+    type = "periodic"
+  },
+  {
+    side = "z+"
+    type = "periodic"
+  }
+]

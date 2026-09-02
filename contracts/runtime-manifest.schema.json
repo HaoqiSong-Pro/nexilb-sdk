@@ -1,0 +1,233 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:nexilb:runtime-manifest:4",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_id",
+    "schema_version",
+    "package_state",
+    "sdk_version",
+    "abi",
+    "api",
+    "runtime_load_name",
+    "artifacts",
+    "artifact_set_sha256"
+  ],
+  "properties": {
+    "schema_id": {
+      "const": "urn:nexilb:runtime-manifest:4"
+    },
+    "schema_version": {
+      "const": 4
+    },
+    "package_state": {
+      "const": "release"
+    },
+    "sdk_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+(?:-[0-9A-Za-z.-]+)?$"
+    },
+    "abi": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "major",
+        "minor"
+      ],
+      "properties": {
+        "major": {
+          "const": 1
+        },
+        "minor": {
+          "const": 0
+        }
+      }
+    },
+    "api": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "min",
+        "max"
+      ],
+      "properties": {
+        "min": {
+          "const": 1
+        },
+        "max": {
+          "const": 1
+        }
+      }
+    },
+    "runtime_load_name": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9._+-]+$"
+    },
+    "artifacts": {
+      "type": "array",
+      "minItems": 7,
+      "maxItems": 7,
+      "prefixItems": [
+        {
+          "$ref": "#/$defs/runtime"
+        },
+        {
+          "$ref": "#/$defs/case_verify"
+        },
+        {
+          "$ref": "#/$defs/case_test"
+        },
+        {
+          "$ref": "#/$defs/public_header"
+        },
+        {
+          "$ref": "#/$defs/public_cpp_header"
+        },
+        {
+          "$ref": "#/$defs/abi_layout"
+        },
+        {
+          "$ref": "#/$defs/catalog_bundle"
+        }
+      ],
+      "items": false
+    },
+    "artifact_set_sha256": {
+      "$ref": "#/$defs/sha256"
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "path": {
+      "type": "string",
+      "pattern": "^(?!/)(?![A-Za-z]:)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*\\\\)[A-Za-z0-9._/-]+$"
+    },
+    "base_artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "role",
+        "path",
+        "size",
+        "sha256"
+      ],
+      "properties": {
+        "role": {
+          "type": "string"
+        },
+        "path": {
+          "$ref": "#/$defs/path"
+        },
+        "size": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "runtime": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/base_artifact"
+        },
+        {
+          "properties": {
+            "role": {
+              "const": "runtime"
+            }
+          }
+        }
+      ]
+    },
+    "case_verify": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/base_artifact"
+        },
+        {
+          "properties": {
+            "role": {
+              "const": "case_verify"
+            }
+          }
+        }
+      ]
+    },
+    "case_test": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/base_artifact"
+        },
+        {
+          "properties": {
+            "role": {
+              "const": "case_test"
+            }
+          }
+        }
+      ]
+    },
+    "public_header": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/base_artifact"
+        },
+        {
+          "properties": {
+            "role": {
+              "const": "public_header"
+            }
+          }
+        }
+      ]
+    },
+    "public_cpp_header": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/base_artifact"
+        },
+        {
+          "properties": {
+            "role": {
+              "const": "public_cpp_header"
+            }
+          }
+        }
+      ]
+    },
+    "abi_layout": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/base_artifact"
+        },
+        {
+          "properties": {
+            "role": {
+              "const": "abi_layout"
+            }
+          }
+        }
+      ]
+    },
+    "catalog_bundle": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/base_artifact"
+        },
+        {
+          "properties": {
+            "role": {
+              "const": "catalog_bundle"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "$schema": "urn:nexilb:schema:catalog-descriptor:0.2",
+  "descriptor_schema_version": {"major": 0, "minor": 2},
+  "entity_id": "case.nexilb.3d.rti",
+  "kind": {"id": "case", "code": 17},
+  "descriptor_revision": {"major": 0, "minor": 2},
+  "public_name": "NexiLB 3D RTI",
+  "summary": "Preservation contract for the approved NexiLB 3D RTI case asset; this contract prototype cannot run the case.",
+  "visibility": "public",
+  "scope": "library_static",
+  "status": {
+    "contract": "preservation_requirement",
+    "implementation": "not_present",
+    "runtime": "unavailable",
+    "verification": "not_evaluated_by_this_artifact"
+  },
+  "availability_reason_id": "status.contract_prototype.no_solver",
+  "schema_ref": {"state": "unavailable"},
+  "relations": [
+    {"relation_id": "uses_model", "target_id": "model.nexilb.NSAllen"}
+  ],
+  "blocking_requirement_ids": [
+    "REQ-PRIVATE-MODEL-ADAPTER",
+    "REQ-APPROVED-CASE-SCHEMA",
+    "REQ-NATIVE-COMPATIBILITY-TESTS"
+  ],
+  "evidence_ids": [],
+  "payload": {
+    "model_id": "model.nexilb.NSAllen",
+    "dimension": 3,
+    "source_case_token": "rti",
+    "required_asset_roles": []
+  }
+}

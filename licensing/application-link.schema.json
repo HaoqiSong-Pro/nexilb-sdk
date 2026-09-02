@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:nexilb:license-application-link:1",
+  "title": "NexiLB offline research-use application channel",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_id", "schema_version", "state", "license_id",
+    "delivery_mode", "online_endpoint", "documents", "submission_channel",
+    "privacy_handling", "required_application_fields", "authorization_boundary"
+  ],
+  "properties": {
+    "schema_id": {"const": "urn:nexilb:license-application-link:1"},
+    "schema_version": {"const": 1},
+    "state": {"const": "offline_email_application_available_not_authorization"},
+    "license_id": {"const": "LicenseRef-NexiLB-Research-Use-1.0"},
+    "delivery_mode": {"const": "offline-email"},
+    "online_endpoint": {"type": "null"},
+    "documents": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["application", "privacy_notice", "authorization_template"],
+      "properties": {
+        "application": {"$ref": "#/$defs/document"},
+        "privacy_notice": {"$ref": "#/$defs/document"},
+        "authorization_template": {"$ref": "#/$defs/document"}
+      }
+    },
+    "submission_channel": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type", "address", "subject_prefix", "body_encoding",
+        "attachments_required", "online_form_available"
+      ],
+      "properties": {
+        "type": {"const": "offline-email"},
+        "address": {"const": "haoqisong@126.com"},
+        "subject_prefix": {"const": "[NexiLB research-use application]"},
+        "body_encoding": {"const": "UTF-8"},
+        "attachments_required": {"const": false},
+        "online_form_available": {"const": false}
+      }
+    },
+    "privacy_handling": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "notice_version", "effective_date", "withdrawn_or_incomplete_delete_days",
+        "declined_retention_months", "authorized_retention_years_after_end",
+        "correction_or_withdrawal_address"
+      ],
+      "properties": {
+        "notice_version": {"const": "NexiLB-Privacy-Notice-1.0"},
+        "effective_date": {"const": "2026-09-01"},
+        "withdrawn_or_incomplete_delete_days": {"const": 30},
+        "declined_retention_months": {"const": 12},
+        "authorized_retention_years_after_end": {"const": 3},
+        "correction_or_withdrawal_address": {"const": "haoqisong@126.com"}
+      }
+    },
+    "required_application_fields": {
+      "type": "array",
+      "minItems": 19,
+      "uniqueItems": true,
+      "items": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"}
+    },
+    "authorization_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "application_submission_grants_rights",
+        "receipt_acknowledgement_grants_rights",
+        "automatic_issuance",
+        "separate_written_authorization_required",
+        "private_source_code_included"
+      ],
+      "properties": {
+        "application_submission_grants_rights": {"const": false},
+        "receipt_acknowledgement_grants_rights": {"const": false},
+        "automatic_issuance": {"const": false},
+        "separate_written_authorization_required": {"const": true},
+        "private_source_code_included": {"const": false}
+      }
+    }
+  },
+  "$defs": {
+    "document": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "version", "sha256"],
+      "properties": {
+        "path": {"type": "string", "pattern": "^licensing/[A-Z0-9-]+\\.md$"},
+        "version": {"type": "string", "minLength": 1},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    }
+  }
+}

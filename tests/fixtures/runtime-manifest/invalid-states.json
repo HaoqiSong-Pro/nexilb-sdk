@@ -1,0 +1,37 @@
+[
+  {
+    "case_id": "unknown-package-state",
+    "base": "release-valid.json",
+    "replace": {
+      "package_state": "prototype"
+    }
+  },
+  {
+    "case_id": "absolute-runtime-name",
+    "base": "release-valid.json",
+    "replace": {
+      "runtime_load_name": "/tmp/libnexilb.so.1"
+    }
+  },
+  {
+    "case_id": "artifact-path-escapes",
+    "base": "release-valid.json",
+    "replace": {
+      "artifacts.0.path": "../libnexilb.so.1"
+    }
+  },
+  {
+    "case_id": "artifact-hash-invalid",
+    "base": "release-valid.json",
+    "replace": {
+      "artifacts.0.sha256": "not-a-sha256"
+    }
+  },
+  {
+    "case_id": "artifact-set-hash-invalid",
+    "base": "release-valid.json",
+    "replace": {
+      "artifact_set_sha256": "not-a-sha256"
+    }
+  }
+]

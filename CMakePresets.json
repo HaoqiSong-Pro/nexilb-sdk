@@ -1,0 +1,28 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {"major": 3, "minor": 26, "patch": 0},
+  "configurePresets": [
+    {
+      "name": "contract",
+      "displayName": "Public SDK contract checks",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/out/build/${presetName}",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "BUILD_TESTING": "ON",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+      }
+    }
+  ],
+  "buildPresets": [
+    {"name": "contract", "configurePreset": "contract", "jobs": 2}
+  ],
+  "testPresets": [
+    {
+      "name": "contract",
+      "configurePreset": "contract",
+      "output": {"outputOnFailure": true},
+      "execution": {"noTestsAction": "error", "jobs": 2}
+    }
+  ]
+}

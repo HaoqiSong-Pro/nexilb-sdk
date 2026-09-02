@@ -1,0 +1,60 @@
+{
+  "schema_id": "urn:nexilb:runtime-manifest:4",
+  "schema_version": 4,
+  "package_state": "release",
+  "sdk_version": "1.0.0",
+  "abi": {
+    "major": 1,
+    "minor": 0
+  },
+  "api": {
+    "min": 1,
+    "max": 1
+  },
+  "runtime_load_name": "libnexilb.so.1",
+  "artifacts": [
+    {
+      "role": "runtime",
+      "path": "lib/libnexilb.so.1",
+      "size": 1,
+      "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    {
+      "role": "case_verify",
+      "path": "bin/NexiLBCaseVerify",
+      "size": 1,
+      "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    },
+    {
+      "role": "case_test",
+      "path": "bin/NexiLBCaseTest",
+      "size": 1,
+      "sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+    },
+    {
+      "role": "public_header",
+      "path": "include/nexilb/nexilb.h",
+      "size": 1,
+      "sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+    },
+    {
+      "role": "public_cpp_header",
+      "path": "include/nexilb/nexilb.hpp",
+      "size": 1,
+      "sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+    },
+    {
+      "role": "abi_layout",
+      "path": "share/nexilb/abi/v1/nexilb_abi_layout_64.txt",
+      "size": 1,
+      "sha256": "1111111111111111111111111111111111111111111111111111111111111111"
+    },
+    {
+      "role": "catalog_bundle",
+      "path": "share/nexilb/catalog/NexiLBCatalogBundle.json",
+      "size": 1,
+      "sha256": "2222222222222222222222222222222222222222222222222222222222222222"
+    }
+  ],
+  "artifact_set_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+}

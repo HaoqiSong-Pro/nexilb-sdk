@@ -1,0 +1,13 @@
+{
+  "schema_id": "urn:nexilb:catalog-digest-canonicalization:1",
+  "schema_version": 1,
+  "scope": "effective_catalog",
+  "hash_algorithm": "sha256",
+  "kind_order": [14, 1],
+  "kind_names": ["model_chain", "model"],
+  "item_order": "catalog_index_ascending",
+  "record_source": "catalog_descriptor_json",
+  "record_bytes": "exact_utf8_excluding_trailing_nul",
+  "record_suffix_hex": "0a",
+  "json_recanonicalization": "forbidden"
+}

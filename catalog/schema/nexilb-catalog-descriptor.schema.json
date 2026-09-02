@@ -1,0 +1,489 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:nexilb:schema:catalog-descriptor:0.2",
+  "title": "NexiLB public catalog descriptor",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "descriptor_schema_version",
+    "entity_id",
+    "kind",
+    "descriptor_revision",
+    "public_name",
+    "summary",
+    "visibility",
+    "scope",
+    "status",
+    "availability_reason_id",
+    "schema_ref",
+    "relations",
+    "blocking_requirement_ids",
+    "evidence_ids",
+    "payload"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "urn:nexilb:schema:catalog-descriptor:0.2"
+    },
+    "descriptor_schema_version": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "major",
+        "minor"
+      ],
+      "properties": {
+        "major": {
+          "const": 0
+        },
+        "minor": {
+          "const": 2
+        }
+      }
+    },
+    "entity_id": {
+      "enum": [
+        "case.nexilb.2d.bubble",
+        "case.nexilb.2d.contact_angle.cylinder",
+        "case.nexilb.2d.contact_angle.flat",
+        "case.nexilb.2d.drop",
+        "case.nexilb.2d.poiseuille",
+        "case.nexilb.2d.rti",
+        "case.nexilb.2d.two_phase_imb.capillary_relaxation",
+        "case.nexilb.2d.two_phase_imb.sinking_cylinder",
+        "case.nexilb.2d.two_phase_imb.three_particle_assembly",
+        "case.nexilb.3d.bubble",
+        "case.nexilb.3d.contact_angle.flat",
+        "case.nexilb.3d.contact_angle.sphere",
+        "case.nexilb.3d.drop",
+        "case.nexilb.3d.jet",
+        "case.nexilb.3d.rti",
+        "CASE-DEM-CONTACT-RESTART",
+        "CASE-IMB-COUPLING-MINIMAL",
+        "CASE-NPHASE-WETTING-MINIMAL",
+        "CASE-PURE-COUPLED-DEGENERATION",
+        "chain.NPhaseContactAngle",
+        "chain.NPhaseImbDemContactAngle",
+        "chain.nexilb.native",
+        "model.NPhaseContactAngle",
+        "model.NPhaseImbDemContactAngle",
+        "model.nexilb.NSAllen",
+        "model.nexilb.NSAllenImbPrescribedMotion"
+      ]
+    },
+    "kind": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "code"
+      ],
+      "properties": {
+        "id": {
+          "enum": [
+            "model",
+            "model_chain",
+            "case"
+          ]
+        },
+        "code": {
+          "enum": [
+            1,
+            14,
+            17
+          ]
+        }
+      }
+    },
+    "descriptor_revision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "major",
+        "minor"
+      ],
+      "properties": {
+        "major": {
+          "const": 0
+        },
+        "minor": {
+          "const": 2
+        }
+      }
+    },
+    "public_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "visibility": {
+      "const": "public"
+    },
+    "scope": {
+      "const": "library_static"
+    },
+    "status": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contract",
+        "implementation",
+        "runtime",
+        "verification"
+      ],
+      "properties": {
+        "contract": {
+          "enum": [
+            "draft_contract",
+            "preservation_requirement",
+            "runtime_contract"
+          ]
+        },
+        "implementation": {
+          "enum": [
+            "not_present",
+            "present_in_controlled_runtime"
+          ]
+        },
+        "runtime": {
+          "enum": [
+            "unavailable",
+            "available_with_compatible_runtime"
+          ]
+        },
+        "verification": {
+          "enum": [
+            "not_evaluated_by_this_artifact",
+            "covered_by_cuda_runtime_tests"
+          ]
+        }
+      }
+    },
+    "availability_reason_id": {
+      "enum": [
+        "status.contract_prototype.no_solver",
+        "status.controlled_runtime.available",
+        "status.controlled_runtime.dimension_limited"
+      ]
+    },
+    "schema_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "state"
+      ],
+      "properties": {
+        "state": {
+          "enum": [
+            "unavailable",
+            "runtime_descriptor_schema_available"
+          ]
+        }
+      }
+    },
+    "relations": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "relation_id",
+          "target_id"
+        ],
+        "properties": {
+          "relation_id": {
+            "enum": [
+              "member_of",
+              "parallel_with",
+              "uses_model"
+            ]
+          },
+          "target_id": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "blocking_requirement_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^REQ-[A-Z0-9]+(?:-[A-Z0-9]+)*$"
+      }
+    },
+    "evidence_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^test\\.[a-z0-9_.-]+$"
+      }
+    },
+    "payload": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "member_inventory_state": {
+          "enum": [
+            "complete_for_contract"
+          ]
+        },
+        "members": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^model\\.[A-Za-z0-9.]+$"
+          }
+        },
+        "creatable": {
+          "type": "boolean"
+        },
+        "declared_contract_features": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9_]+$"
+          }
+        },
+        "supported_dimensions": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 2,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              2,
+              3
+            ]
+          }
+        },
+        "supported_precisions": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "f32",
+              "f64"
+            ]
+          }
+        },
+        "model_id": {
+          "type": "string",
+          "pattern": "^model\\.[A-Za-z0-9.]+$"
+        },
+        "model_ids": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 2,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "model.NPhaseContactAngle",
+              "model.NPhaseImbDemContactAngle"
+            ]
+          }
+        },
+        "contract_state": {
+          "const": "blocked"
+        },
+        "dimension": {
+          "enum": [
+            2,
+            3
+          ]
+        },
+        "source_case_token": {
+          "enum": [
+            "bubble",
+            "drop",
+            "rti",
+            "jet",
+            "poiseuille",
+            "contact_angle",
+            "two_phase_imb"
+          ]
+        },
+        "required_asset_roles": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "trajectory"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "kind": {
+            "properties": {
+              "id": {
+                "const": "model"
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "kind": {
+            "properties": {
+              "code": {
+                "const": 1
+              }
+            }
+          },
+          "relations": {
+            "minItems": 1,
+            "maxItems": 1
+          },
+          "payload": {
+            "required": [
+              "creatable",
+              "declared_contract_features",
+              "supported_dimensions",
+              "supported_precisions"
+            ],
+            "minProperties": 4,
+            "maxProperties": 4
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "kind": {
+            "properties": {
+              "id": {
+                "const": "model_chain"
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "kind": {
+            "properties": {
+              "code": {
+                "const": 14
+              }
+            }
+          },
+          "relations": {
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "payload": {
+            "required": [
+              "member_inventory_state",
+              "members"
+            ],
+            "minProperties": 2,
+            "maxProperties": 2
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "kind": {
+            "properties": {
+              "id": {
+                "const": "case"
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "kind": {
+            "properties": {
+              "code": {
+                "const": 17
+              }
+            }
+          },
+          "payload": {}
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "entity_id": {
+            "pattern": "^case\\.nexilb\\."
+          }
+        },
+        "required": [
+          "entity_id"
+        ]
+      },
+      "then": {
+        "properties": {
+          "relations": {
+            "minItems": 1,
+            "maxItems": 1
+          },
+          "payload": {
+            "required": [
+              "model_id",
+              "dimension",
+              "source_case_token",
+              "required_asset_roles"
+            ],
+            "minProperties": 4,
+            "maxProperties": 4
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "entity_id": {
+            "pattern": "^CASE-"
+          }
+        },
+        "required": [
+          "entity_id"
+        ]
+      },
+      "then": {
+        "properties": {
+          "relations": {
+            "minItems": 2,
+            "maxItems": 4
+          },
+          "payload": {
+            "required": [
+              "creatable",
+              "contract_state",
+              "model_ids"
+            ],
+            "minProperties": 3,
+            "maxProperties": 3
+          }
+        }
+      }
+    }
+  ]
+}

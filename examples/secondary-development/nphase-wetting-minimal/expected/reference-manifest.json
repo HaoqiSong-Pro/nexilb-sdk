@@ -1,0 +1,9 @@
+{
+  "$schema": "urn:nexilb:schema:secondary-case-reference:1.1", "schema_version": "1.1", "case_id": "CASE-NPHASE-WETTING-MINIMAL", "reference_status": "not_evaluated",
+  "references": [
+    {"artifact_id": "reference.nphase.semantic_state", "role": "planned semantic phase-state reference", "status": "planned_not_approved", "required_evidence_ids": ["VAL-NPHASE-REPRESENTATION"]},
+    {"artifact_id": "reference.nphase.conservation", "role": "planned conservation reference", "status": "planned_not_approved", "required_evidence_ids": ["VAL-NPHASE-CONSERVATION"]},
+    {"artifact_id": "reference.wetting.measurement", "role": "planned wetting measurement reference", "status": "planned_not_approved", "required_evidence_ids": ["VAL-WETTING-CONTACT-ANGLE"]},
+    {"artifact_id": "reference.nphase.restart", "role": "planned continuous-versus-resume reference after checkpoint slots exist", "status": "planned_not_approved", "required_evidence_ids": ["VAL-NPHASE-RESTART-CONTINUITY"]}
+  ]
+}

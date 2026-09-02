@@ -1,0 +1,10 @@
+{
+  "$schema": "urn:nexilb:schema:secondary-case-config:1.1",
+  "schema_version": "1.1",
+  "case_id": "CASE-DEM-CONTACT-RESTART",
+  "contract_state": {"implementation": "c11_consumer_executable", "runtime": "compatible_runtime_config_path_lifecycle_available", "physical_acceptance": "not_evaluated"},
+  "model_configs": [{"config_id": "config.dem.fixed.wall.restart", "model_id": "model.NPhaseImbDemContactAngle", "configuration_status": "materialized_case_root_relative"}],
+  "semantic_requirements": ["REQ-DEM-EXACTLY-ONE-FIXED-PRESCRIBED-PARTICLE", "REQ-DEM-NO-PARTICLE-PARTICLE-CONTACT-CLAIM", "REQ-CONTACT-WALL-ARRAY-OPTIONAL-SNAPSHOT-GATE", "REQ-CHECKPOINT-RESTART-OPTIONAL-SLOT-GATE", "REQ-PHYSICAL-ACCEPTANCE-NOT-EVALUATED"],
+  "input_asset_ids": ["asset.dem.2d.config", "asset.dem.2d.fixed_particle", "asset.dem.2d.trajectory", "asset.dem.3d.config", "asset.dem.3d.fixed_particle", "asset.dem.3d.trajectory"],
+  "optional_slots": {"input_transaction": "null_in_current_runtime", "validation": "available_in_current_runtime", "snapshot": "available_in_current_runtime", "checkpoint_restart": "available_in_current_runtime"}
+}

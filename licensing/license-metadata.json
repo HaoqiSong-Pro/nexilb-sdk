@@ -1,0 +1,14 @@
+{
+  "schema_id": "urn:nexilb:license-metadata:1",
+  "schema_version": 1,
+  "state": "approved_text_not_release_authorization",
+  "license_id": "LicenseRef-NexiLB-Research-Use-1.0",
+  "license_name": "NexiLB Research Use License 1.0",
+  "licensor": "Haoqi Song",
+  "contact": "haoqisong@126.com",
+  "formal_text_path": "LICENSE.md",
+  "sha256": "0259c84f75dd735ecb42f6946d8ebd828e584d698d4280306d412fcb86c4ee65",
+  "separate_written_authorization_required": true,
+  "download_grants_use_rights": false,
+  "open_source_license": false
+}

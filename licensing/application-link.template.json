@@ -1,0 +1,74 @@
+{
+  "schema_id": "urn:nexilb:license-application-link:1",
+  "schema_version": 1,
+  "state": "offline_email_application_available_not_authorization",
+  "license_id": "LicenseRef-NexiLB-Research-Use-1.0",
+  "delivery_mode": "offline-email",
+  "online_endpoint": null,
+  "documents": {
+    "application": {
+      "path": "licensing/OFFLINE-APPLICATION.md",
+      "version": "NexiLB-Offline-Application-1.0",
+      "sha256": "82f5f74bdd3f818ceaae519108816818383d0e1f822cfaa14ef29723dd4368a8"
+    },
+    "privacy_notice": {
+      "path": "licensing/PRIVACY-NOTICE.md",
+      "version": "NexiLB-Privacy-Notice-1.0",
+      "sha256": "5fbe448cdad7d517b4891c37cdf97da1d2bcd62ae250b6dc38aac4812cd65cec"
+    },
+    "authorization_template": {
+      "path": "licensing/WRITTEN-AUTHORIZATION-TEMPLATE.md",
+      "version": "NexiLB-Written-Authorization-Template-1.0",
+      "sha256": "11d2038246317d025b7032f1f7016d3b53d3f0478a12d35a78b66e42e949a2e8"
+    }
+  },
+  "submission_channel": {
+    "type": "offline-email",
+    "address": "haoqisong@126.com",
+    "subject_prefix": "[NexiLB research-use application]",
+    "body_encoding": "UTF-8",
+    "attachments_required": false,
+    "online_form_available": false
+  },
+  "privacy_handling": {
+    "notice_version": "NexiLB-Privacy-Notice-1.0",
+    "effective_date": "2026-09-01",
+    "withdrawn_or_incomplete_delete_days": 30,
+    "declined_retention_months": 12,
+    "authorized_retention_years_after_end": 3,
+    "correction_or_withdrawal_address": "haoqisong@126.com"
+  },
+  "required_application_fields": [
+    "applicant_full_name",
+    "applicant_email",
+    "organization_or_independent_status",
+    "role_or_position",
+    "country_or_region",
+    "project_title",
+    "noncommercial_research_summary",
+    "requested_nexilb_version",
+    "requested_artifact_set",
+    "platform_and_environment",
+    "requested_start_date",
+    "requested_end_date",
+    "named_users",
+    "maximum_installation_count",
+    "intended_outputs_or_publications",
+    "external_collaborators",
+    "accuracy_confirmation",
+    "license_boundary_acknowledgement",
+    "noncommercial_use_confirmation",
+    "no_military_use_confirmation",
+    "privacy_notice_acknowledgement",
+    "no_unlisted_sharing_confirmation",
+    "typed_applicant_name",
+    "submission_date"
+  ],
+  "authorization_boundary": {
+    "application_submission_grants_rights": false,
+    "receipt_acknowledgement_grants_rights": false,
+    "automatic_issuance": false,
+    "separate_written_authorization_required": true,
+    "private_source_code_included": false
+  }
+}
