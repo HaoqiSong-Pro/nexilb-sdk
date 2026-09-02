@@ -22,7 +22,7 @@ non-NULL `input_begin`, `input_write_initial_field`, `input_add_particles`,
 `input_commit` and `input_abort` slots and the corresponding catalog
 capabilities. Otherwise stop before opening a transaction. Submit fields and
 particles in one input transaction, then run model and
-geometry validation. Require public diagnostics for overlap, wall clearance,
+geometry validation. Require public validation results for overlap, wall clearance,
 domain ownership, invalid inertia/mass, unsupported shapes, memory limits and
 coupling stability. Resource estimates are admission checks, not promises.
 After initialization compare fluid conservation, particle force/torque,
@@ -32,7 +32,7 @@ different from the approved case manifest is rejected before allocation.
 
 Each dimension supplies exactly one fixed-particle CSV and one prescribed
 trajectory CSV. The config references the trajectory relative to its asset
-directory. The particle CSV is an audited fixture for future transaction and
+directory. The particle CSV is a verified fixture for future transaction and
 snapshot checks; it is not submitted because input transaction slots are NULL.
 
 Select f32/f64 through the compatible runtime in `variants.json`; the same

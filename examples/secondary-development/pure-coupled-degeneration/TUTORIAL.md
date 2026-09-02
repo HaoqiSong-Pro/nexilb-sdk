@@ -9,8 +9,8 @@ The C11 executable takes one runtime and two independent relative config paths:
 `nexilb_degeneration_consumer <runtime-library> assets/2d/pure-config-f32.txt
 assets/2d/coupled-config.txt`. Run it from the copied case-package root. It completes the
 configuration-file lifecycle for the pure model first and starts the coupled
-model only if the first lifecycle succeeds. Auxiliary CSV paths remain local
-to the case package. This proves neither equivalence nor acceptance; those
+model only if the first lifecycle succeeds. Auxiliary CSV paths remain
+package-relative within the case package. This proves neither equivalence nor acceptance; those
 claims require the independent comparisons below.
 
 The pure config is precision-specific because its Newton tolerance is part of

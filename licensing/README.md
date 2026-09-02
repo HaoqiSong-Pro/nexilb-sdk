@@ -10,4 +10,5 @@ offline email channel; it is not an online endpoint and does not issue an
 authorization. Applicants must use `OFFLINE-APPLICATION.md` and read the
 versioned `PRIVACY-NOTICE.md`. `WRITTEN-AUTHORIZATION-TEMPLATE.md` shows the
 minimum content of the separate written instrument but is itself not an
-authorization. This custom research-use license is not an open-source license.
+authorization. Permissions are limited to those expressly stated in a valid,
+separately issued written authorization.

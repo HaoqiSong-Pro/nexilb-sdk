@@ -4,7 +4,7 @@ SPDX-style identifier: `LicenseRef-NexiLB-Research-Use-1.0`
 
 Copyright © 2026 Haoqi Song. All rights reserved.
 
-NexiLB, including its private source code, public headers, documentation, examples and binary runtime artifacts, is proprietary software. This is a custom research-use licensing boundary and is not an open-source license.
+NexiLB, including its private source code, public headers, documentation, examples and binary runtime artifacts, is proprietary software. This custom research-use licensing boundary grants only the permissions expressly stated in a separately issued written authorization.
 
 ## No automatic grant
 

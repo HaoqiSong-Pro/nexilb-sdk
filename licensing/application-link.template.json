@@ -19,7 +19,7 @@
     "authorization_template": {
       "path": "licensing/WRITTEN-AUTHORIZATION-TEMPLATE.md",
       "version": "NexiLB-Written-Authorization-Template-1.0",
-      "sha256": "11d2038246317d025b7032f1f7016d3b53d3f0478a12d35a78b66e42e949a2e8"
+      "sha256": "920b1c8133168e5e91f157d8491d2408548b69de84486c1bdd8f61aaa3126fb5"
     }
   },
   "submission_channel": {

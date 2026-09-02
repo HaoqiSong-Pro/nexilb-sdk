@@ -10,7 +10,7 @@ case-package root run
 `nexilb_dem_contact_consumer <runtime-library> assets/2d/config.txt`; it negotiates
 the ABI, finds `model.NPhaseImbDemContactAngle`, creates the model, configures,
 initializes and advances one step. The particle CSV contains one row with
-`fixed=1`; it is audited but is not transaction-submitted because the input
+`fixed=1`; it is verified but is not transaction-submitted because the input
 transaction slots are NULL. The config consumes its relative trajectory CSV.
 
 The catalog must expose the exact coupled model. Wall-contact and restart
@@ -29,7 +29,7 @@ capability digest or producer environment. Restore only into an EMPTY model
 using the identical approved effective configuration. Never patch checkpoint
 bytes or silently initialize missing history. Run the continuous and resumed
 branches to the same integer targets and compare public particle and contact
-arrays, force/torque diagnostics and history variables with the approved
+arrays, force/torque results and history variables with the approved
 restart policy. Destroy snapshots before resetting or destroying the model.
 
 The verified runtime matrix records all four variants completing

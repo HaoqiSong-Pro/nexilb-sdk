@@ -45,8 +45,7 @@ installation or purpose.
 ## 3. Reserved rights and prohibited conduct
 
 Copyright © 2026 Haoqi Song. All rights reserved. NexiLB remains proprietary
-software and this authorization is not an open-source license. Rights not
-expressly granted above are reserved.
+software. Rights not expressly granted above are reserved.
 
 Unless an additional permission above expressly states otherwise, the
 licensee must not redistribute, publish, transfer, sublicense, sell, rent,

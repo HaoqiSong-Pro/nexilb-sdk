@@ -12,18 +12,36 @@
 
 > **NexiLB** 源自 **N-phase Extensible Interface Lattice Boltzmann**。程序面向不可混溶 N 相流动、复杂表面润湿、浸入边界以及颗粒–流体–接触耦合，通过受控 CUDA 运行库、稳定 C/C++ SDK 和可扩展案例接口连接数值模型与研究应用。
 
-<p align="center">
-  <a href="https://haoqisong-pro.github.io/nexilb-docs/#featured-simulations">
-    <img src="https://haoqisong-pro.github.io/nexilb-docs/_static/media/showcase/NexiLB__GranularCollapse__free-surface-2d.gif" alt="NexiLB 三维颗粒柱坍塌自由表面演化" width="900">
-  </a>
-</p>
-<p align="center"><em>颗粒–流体全耦合演化 · 查看更多 <a href="https://haoqisong-pro.github.io/nexilb-docs/#featured-simulations">Featured Simulations</a></em></p>
+> [!IMPORTANT]
+> NexiLB 相关论文目前仍处于同行评审阶段，尚未通过评审并正式发表，因此 v1.0.0 暂时采用自定义的受限研究使用许可。这是服务于现阶段研究延续与负责任共享的临时安排，并不代表 NexiLB 长期开放程度的上限。
+>
+> 这项工作凝聚了我们近三年的探索与努力。我们对这项研究充满期待，也真诚希望相关模型与程序能够支持更多前沿研究，在新的问题中发挥它的最大价值。一个可信、可复现并能够长期发展的研究程序，需要作者与同行使用者共同维护，也需要大家在使用、验证与改进中付出持续努力。
+>
+> 我们承诺：一旦论文通过同行评审，仓库权限将进一步开放；随着研究持续深入，代码内容与使用权限也将逐步扩大。NexiLB 后续的发布与许可策略只会向更加开放的方向发展。
+
+<table>
+  <tr>
+    <td width="50%" align="center">
+      <a href="https://haoqisong-pro.github.io/nexilb-docs/#featured-simulations">
+        <img src="https://haoqisong-pro.github.io/nexilb-docs/_static/media/showcase/NexiLB__CylinderWaterEntry__D75__phase__2d-xy__t000000-t011461.gif" alt="NexiLB 圆柱入水相场与浸入边界演化" width="100%">
+      </a><br>
+      <strong>圆柱入水 · 相场与浸入边界</strong>
+    </td>
+    <td width="50%" align="center">
+      <a href="https://haoqisong-pro.github.io/nexilb-docs/#featured-simulations">
+        <img src="https://haoqisong-pro.github.io/nexilb-docs/_static/media/showcase/NexiLB__CylinderWaterEntry__D75__experiment-vs-simulation.png" alt="NexiLB 圆柱入水实验与仿真形态对比" width="100%">
+      </a><br>
+      <strong>圆柱入水 · 实验与仿真形态</strong>
+    </td>
+  </tr>
+</table>
+<p align="center"><em>圆柱入水：界面形变与浸入边界 · 查看更多 <a href="https://haoqisong-pro.github.io/nexilb-docs/#featured-simulations">Featured Simulations</a></em></p>
 
 ## Why NexiLB?
 
 - **N 相界面与复杂润湿** — 支持不可混溶 N 相流动、逐对界面张力、平面及嵌入曲面接触角，并可处理多条接触线协同演化。
 - **流体–颗粒–接触耦合** — 将 LBM、浸入边界方法和 DEM 结合，用于固定边界、规定运动刚体、自由颗粒以及颗粒接触问题。
-- **CUDA 加速** — 提供 2D/3D、f32/f64 四种运行变体，首版在 WSL2、Ubuntu 24.04、CUDA 13.3 和 `sm_120` 环境完成发布验证。
+- **CUDA 加速** — 提供 2D/3D、f32/f64 四种运行变体，首版支持 WSL2、Ubuntu 24.04、CUDA 13.3 和 `sm_120` 参考环境。
 - **面向个人 GPU 的高性能计算** — 支持在个人游戏本和高性能笔记本上开展计算，可在数十小时内完成千万级 LBM 网格与数千颗粒的全耦合研究算例。
 - **稳定的二次开发入口** — 公共 C11 ABI、C++17 封装、CMake package 和四个可编译案例模板，使新问题无需依赖私有实现即可接入统一生命周期。
 - **可复现案例合同** — 模型、维度、精度、输入资产、能力要求和验收定义均可机器读取，便于比较配置、结果与后续版本。
@@ -41,7 +59,7 @@
 | Developer Guide | [Create a new case](https://haoqisong-pro.github.io/nexilb-docs/secondary-development/) |
 
 > [!IMPORTANT]
-> NexiLB v1.0.0 使用自定义的受限研究使用许可。仓库公开、程序包可下载或持有文件都不会自动授予运行、修改或再分发权利；实际使用前须取得 Haoqi Song 针对具体研究项目签发的书面授权。
+> NexiLB v1.0.0 因相关论文仍处于同行评审阶段，暂时使用自定义的受限研究使用许可。仓库公开、程序包可下载或持有文件都不会自动授予运行、修改或再分发权利；实际使用前须取得 Haoqi Song 针对具体研究项目签发的书面授权。论文通过评审后，仓库权限将进一步开放。
 
 选择与仿真维度及浮点精度一致的程序包：
 
@@ -53,7 +71,7 @@
 | 3D · f64 | [`d3-f64`](https://github.com/HaoqiSong-Pro/nexilb-sdk/releases/download/v1.0.0/NexiLB-v1.0.0-wsl2-ubuntu24.04-x86_64-cuda13.3-sm120-d3-f64.tar.gz) |
 | Checksums | [`SHA256SUMS`](https://github.com/HaoqiSong-Pro/nexilb-sdk/releases/download/v1.0.0/SHA256SUMS) |
 
-首版运行库面向 64 位 Linux ABI。Windows 用户通过 WSL2 与 Ubuntu 24.04 使用；当前验证环境为 CUDA Toolkit 13.3、NVIDIA 610.88 驱动和计算能力 12.0（`sm_120`）的 GeForce RTX 5070 Ti Laptop GPU。其他驱动、CUDA 版本或 GPU 架构需要重新完成最小案例与研究目标所需的数值验证。
+首版运行库面向 64 位 Linux ABI。Windows 用户通过 WSL2 与 Ubuntu 24.04 使用；首版参考环境为 CUDA Toolkit 13.3、NVIDIA 610.88 驱动和计算能力 12.0（`sm_120`）的 GeForce RTX 5070 Ti Laptop GPU。使用其他驱动、CUDA 版本或 GPU 架构时，应先以最小案例确认兼容性，并根据研究目标完成必要的数值比较。
 
 ## Try NexiLB
 
@@ -136,14 +154,6 @@ target_link_libraries(my_nexilb_case PRIVATE NexiLB::Headers ${CMAKE_DL_LIBS})
 
 建立新案例时，从物理过程最接近的模板复制案例包，并明确更新模型 ID、输入资产、2D/3D 与 f32/f64 变体、所需能力和验收条件。具体目录、消费者接入和测试方法见 [Developer Guide](https://haoqisong-pro.github.io/nexilb-docs/secondary-development/) 与 [`examples/secondary-development`](examples/secondary-development/README.md)。
 
-SDK 自身的公共合同可通过以下命令检查：
-
-```console
-cmake --preset contract
-cmake --build --preset contract
-ctest --preset contract
-```
-
 ## Documentation
 
 | Guide | Purpose |
@@ -167,9 +177,9 @@ NexiLB 相关论文正在同行评审阶段。论文正式发表后，推荐题�
 
 Copyright © 2026 Haoqi Song. All rights reserved.
 
-NexiLB v1.0.0 采用自定义的 `LicenseRef-NexiLB-Research-Use-1.0` 受限研究使用许可，**不是开源许可证**。只有单独签发、明确列出被许可人、研究项目、版本、用途、平台和期限的书面授权才会产生使用权。完整条款见 [`LICENSE.md`](LICENSE.md)，申请要求见 [License](https://haoqisong-pro.github.io/nexilb-docs/licensing/)。
+NexiLB v1.0.0 采用自定义的 `LicenseRef-NexiLB-Research-Use-1.0` 受限研究使用许可。只有单独签发、明确列出被许可人、研究项目、版本、用途、平台和期限的书面授权才会产生使用权。完整条款见 [`LICENSE.md`](LICENSE.md)，申请要求见 [License](https://haoqisong-pro.github.io/nexilb-docs/licensing/)。
 
-当前限制是服务于论文同行评审阶段的临时安排。论文通过评审后，仓库权限将进一步开放；随着研究持续深入，代码内容与使用权限也将逐步扩大。
+这一许可安排源于相关论文尚处于同行评审阶段，是服务于当前研究与负责任共享的临时边界。近三年的探索使我们更加期待 NexiLB 能够支持更多前沿研究，并在同行的使用、验证与共同改进中持续成长。论文通过评审后，仓库权限将进一步开放；随着研究持续深入，代码内容与使用权限也将逐步扩大，后续发布与许可策略只会向更加开放的方向发展。
 
 ## People & Acknowledgements
 
