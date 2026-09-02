@@ -42,6 +42,7 @@ with tempfile.TemporaryDirectory(prefix="nexilb-headers-install-") as temporary:
     required_documents = [
         doc_root / "LICENSE.md", doc_root / "NOTICE.md",
         doc_root / "SECURITY.md", doc_root / "README.md",
+        doc_root / "README.zh-CN.md",
         doc_root / "licensing/README.md",
         doc_root / "licensing/SDK-USE-BOUNDARY.md",
         doc_root / "licensing/OFFLINE-APPLICATION.md",

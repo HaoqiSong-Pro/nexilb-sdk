@@ -46,7 +46,7 @@ install(DIRECTORY include/ DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}")
 install(DIRECTORY contracts catalog examples
   DESTINATION "${CMAKE_INSTALL_DATADIR}/nexilb-sdk")
 set(_sdk_documentation_dir "${CMAKE_INSTALL_DATADIR}/doc/NexiLB")
-install(FILES LICENSE.md NOTICE.md SECURITY.md README.md
+install(FILES LICENSE.md NOTICE.md SECURITY.md README.md README.zh-CN.md
   DESTINATION "${_sdk_documentation_dir}")
 install(DIRECTORY licensing/
   DESTINATION "${_sdk_documentation_dir}/licensing"

@@ -1,7 +1,9 @@
 # NexiLB
 
+<p align="right"><strong>English</strong> | <a href="README.zh-CN.md">简体中文</a></p>
+
 <div align="center">
-  <p><strong>基于 CUDA 的 N 相 LBM–IMB–DEM 复杂流体–颗粒系统仿真程序</strong></p>
+  <p><strong>A CUDA-accelerated N-phase LBM–IMB–DEM program for complex fluid–particle systems</strong></p>
   <p>
     <a href="https://github.com/HaoqiSong-Pro/nexilb-sdk/releases/tag/v1.0.0"><img alt="NexiLB v1.0.0" src="https://img.shields.io/badge/release-v1.0.0-1565c0"></a>
     <a href="https://github.com/HaoqiSong-Pro/nexilb-sdk/actions/workflows/check.yml"><img alt="Public SDK checks" src="https://github.com/HaoqiSong-Pro/nexilb-sdk/actions/workflows/check.yml/badge.svg"></a>
@@ -10,43 +12,43 @@
   </p>
 </div>
 
-> **NexiLB** 源自 **N-phase Extensible Interface Lattice Boltzmann**。程序面向不可混溶 N 相流动、复杂表面润湿、浸入边界以及颗粒–流体–接触耦合，通过受控 CUDA 运行库、稳定 C/C++ SDK 和可扩展案例接口连接数值模型与研究应用。
+> **NexiLB** stands for **N-phase Extensible Interface Lattice Boltzmann**. It connects immiscible N-phase flow, complex surface wetting, immersed boundaries, and particle–fluid–contact coupling through controlled CUDA runtimes, a stable C/C++ SDK, and extensible case interfaces.
 
 > [!IMPORTANT]
-> NexiLB 相关论文目前仍处于同行评审阶段，尚未通过评审并正式发表，因此 v1.0.0 暂时采用自定义的受限研究使用许可。这是服务于现阶段研究延续与负责任共享的临时安排，并不代表 NexiLB 长期开放程度的上限。
+> The paper associated with NexiLB is currently under peer review and has not yet been accepted or formally published. NexiLB v1.0.0 therefore uses a custom restricted research-use license as a temporary framework for responsible sharing and continuity of the research. This temporary boundary does not represent the long-term limit of NexiLB's openness.
 >
-> 这项工作凝聚了我们近三年的探索与努力。我们对这项研究充满期待，也真诚希望相关模型与程序能够支持更多前沿研究，在新的问题中发挥它的最大价值。一个可信、可复现并能够长期发展的研究程序，需要作者与同行使用者共同维护，也需要大家在使用、验证与改进中付出持续努力。
+> This work reflects nearly three years of exploration and sustained effort. We have high expectations for the research and sincerely hope that its models and program can support a wider range of frontier studies and realize their full value in new problems. A credible, reproducible, and durable research program depends on continued care from both its authors and the researchers who use, verify, and improve it.
 >
-> 我们承诺：一旦论文通过同行评审，仓库权限将进一步开放；随着研究持续深入，代码内容与使用权限也将逐步扩大。NexiLB 后续的发布与许可策略只会向更加开放的方向发展。
+> We commit that, once the paper passes peer review, repository access will be broadened. As the research develops, more code and permissions will be made available, and future releases and licensing will move only toward greater openness.
 
 <table>
   <tr>
     <td width="50%" align="center">
       <a href="https://haoqisong-pro.github.io/nexilb-docs/#featured-simulations">
-        <img src="https://haoqisong-pro.github.io/nexilb-docs/_static/media/showcase/NexiLB__CylinderWaterEntry__D75__phase__2d-xy__t000000-t011461.gif" alt="NexiLB 圆柱入水相场与浸入边界演化" width="100%">
+        <img src="https://haoqisong-pro.github.io/nexilb-docs/_static/media/showcase/NexiLB__CylinderWaterEntry__D75__phase__2d-xy__t000000-t011461.gif" alt="NexiLB phase-field and immersed-boundary evolution during cylinder water entry" width="100%">
       </a><br>
-      <strong>圆柱入水 · 相场与浸入边界</strong>
+      <strong>Cylinder water entry · Phase field and immersed boundary</strong>
     </td>
     <td width="50%" align="center">
       <a href="https://haoqisong-pro.github.io/nexilb-docs/#featured-simulations">
-        <img src="https://haoqisong-pro.github.io/nexilb-docs/_static/media/showcase/NexiLB__CylinderWaterEntry__D75__experiment-vs-simulation.png" alt="NexiLB 圆柱入水实验与仿真形态对比" width="100%">
+        <img src="https://haoqisong-pro.github.io/nexilb-docs/_static/media/showcase/NexiLB__CylinderWaterEntry__D75__experiment-vs-simulation.png" alt="NexiLB experiment and simulation comparison for cylinder water entry" width="100%">
       </a><br>
-      <strong>圆柱入水 · 实验与仿真形态</strong>
+      <strong>Cylinder water entry · Experiment and simulation</strong>
     </td>
   </tr>
 </table>
-<p align="center"><em>圆柱入水：界面形变与浸入边界 · 查看更多 <a href="https://haoqisong-pro.github.io/nexilb-docs/#featured-simulations">Featured Simulations</a></em></p>
+<p align="center"><em>Cylinder water entry: interface deformation and immersed boundary · Explore more <a href="https://haoqisong-pro.github.io/nexilb-docs/#featured-simulations">Featured Simulations</a></em></p>
 
 ## Why NexiLB?
 
-- **N 相界面与复杂润湿** — 支持不可混溶 N 相流动、逐对界面张力、平面及嵌入曲面接触角，并可处理多条接触线协同演化。
-- **流体–颗粒–接触耦合** — 将 LBM、浸入边界方法和 DEM 结合，用于固定边界、规定运动刚体、自由颗粒以及颗粒接触问题。
-- **CUDA 加速** — 提供 2D/3D、f32/f64 四种运行变体，首版支持 WSL2、Ubuntu 24.04、CUDA 13.3 和 `sm_120` 参考环境。
-- **面向个人 GPU 的高性能计算** — 支持在个人游戏本和高性能笔记本上开展计算，可在数十小时内完成千万级 LBM 网格与数千颗粒的全耦合研究算例。
-- **稳定的二次开发入口** — 公共 C11 ABI、C++17 封装、CMake package 和四个可编译案例模板，使新问题无需依赖私有实现即可接入统一生命周期。
-- **可复现案例合同** — 模型、维度、精度、输入资产、能力要求和验收定义均可机器读取，便于比较配置、结果与后续版本。
+- **N-phase interfaces and complex wetting** — Simulate immiscible N-phase flow, pairwise surface tensions, contact angles on planar or embedded curved surfaces, and the coordinated evolution of multiple contact lines.
+- **Fluid–particle–contact coupling** — Combine LBM, the immersed-boundary method, and DEM for fixed boundaries, prescribed rigid-body motion, freely moving particles, and particle contact.
+- **CUDA acceleration** — Use four 2D/3D and f32/f64 runtime variants. The v1.0.0 reference environment is WSL2, Ubuntu 24.04, CUDA 13.3, and `sm_120`.
+- **High-performance computing on personal GPUs** — Run research calculations on gaming and high-performance laptops, including fully coupled cases with tens of millions of LBM cells and thousands of particles within tens of hours.
+- **Stable extension interface** — Build new problems against a public C11 ABI, C++17 wrapper, CMake package, and four compilable case templates without depending on the private implementation.
+- **Reproducible case contracts** — Describe models, dimensionality, precision, input assets, required capabilities, and acceptance criteria in machine-readable form for comparison across configurations, results, and releases.
 
-如果 NexiLB 对你的研究有帮助，欢迎为仓库点亮 ⭐，并在使用前阅读[许可边界](#license)与[引用说明](#citation--paper)。
+If NexiLB supports your research, consider starring the repository. Before use, read the [license boundary](#license) and [citation guidance](#citation--paper).
 
 ## Get NexiLB
 
@@ -59,9 +61,9 @@
 | Developer Guide | [Create a new case](https://haoqisong-pro.github.io/nexilb-docs/secondary-development/) |
 
 > [!IMPORTANT]
-> NexiLB v1.0.0 因相关论文仍处于同行评审阶段，暂时使用自定义的受限研究使用许可。仓库公开、程序包可下载或持有文件都不会自动授予运行、修改或再分发权利；实际使用前须取得 Haoqi Song 针对具体研究项目签发的书面授权。论文通过评审后，仓库权限将进一步开放。
+> Because the associated paper is still under peer review, NexiLB v1.0.0 temporarily uses a custom restricted research-use license. Repository visibility, package availability, or possession of files does not itself grant permission to run, modify, or redistribute NexiLB. Before use, obtain written authorization from Haoqi Song for the specific research project. Repository access will be broadened after the paper passes peer review.
 
-选择与仿真维度及浮点精度一致的程序包：
+Choose the package matching the simulation dimensionality and floating-point precision:
 
 | Variant | Runtime package |
 |---|---|
@@ -69,13 +71,12 @@
 | 2D · f64 | [`d2-f64`](https://github.com/HaoqiSong-Pro/nexilb-sdk/releases/download/v1.0.0/NexiLB-v1.0.0-wsl2-ubuntu24.04-x86_64-cuda13.3-sm120-d2-f64.tar.gz) |
 | 3D · f32 | [`d3-f32`](https://github.com/HaoqiSong-Pro/nexilb-sdk/releases/download/v1.0.0/NexiLB-v1.0.0-wsl2-ubuntu24.04-x86_64-cuda13.3-sm120-d3-f32.tar.gz) |
 | 3D · f64 | [`d3-f64`](https://github.com/HaoqiSong-Pro/nexilb-sdk/releases/download/v1.0.0/NexiLB-v1.0.0-wsl2-ubuntu24.04-x86_64-cuda13.3-sm120-d3-f64.tar.gz) |
-| Checksums | [`SHA256SUMS`](https://github.com/HaoqiSong-Pro/nexilb-sdk/releases/download/v1.0.0/SHA256SUMS) |
 
-首版运行库面向 64 位 Linux ABI。Windows 用户通过 WSL2 与 Ubuntu 24.04 使用；首版参考环境为 CUDA Toolkit 13.3、NVIDIA 610.88 驱动和计算能力 12.0（`sm_120`）的 GeForce RTX 5070 Ti Laptop GPU。使用其他驱动、CUDA 版本或 GPU 架构时，应先以最小案例确认兼容性，并根据研究目标完成必要的数值比较。
+The v1.0.0 runtimes target the 64-bit Linux ABI. Windows users run them through WSL2 and Ubuntu 24.04. The reference environment uses CUDA Toolkit 13.3, NVIDIA driver 610.88, and a GeForce RTX 5070 Ti Laptop GPU with compute capability 12.0 (`sm_120`). For other drivers, CUDA versions, or GPU architectures, first confirm compatibility with a minimal case and then perform the numerical comparisons required by the research objective.
 
 ## Try NexiLB
 
-解压所选程序包并保持目录结构不变。以下命令以 `d2-f64` 的 N 相润湿示例为例；`<package>` 和 `<build>` 分别替换为解压后的程序包根目录和构建目录。
+Extract the selected package without changing its directory structure. The following example uses the N-phase wetting case from the `d2-f64` package; replace `<package>` and `<build>` with the extracted package root and build directory.
 
 ```console
 cmake \
@@ -90,51 +91,51 @@ cd <package>/share/nexilb-sdk/examples/secondary-development/nphase-wetting-mini
   assets/2d/config-f64.txt
 ```
 
-消费者必须从案例包根目录启动。配置路径及其引用的颗粒表、轨迹和几何资产均使用 `/`，保持为案例目录内的相对路径。计算结果可以在 ParaView 中查看 VTS 内的速度、压力、密度、相场以及颗粒状态。完整过程见 [Installation](https://haoqisong-pro.github.io/nexilb-docs/installation/) 与 [Running NexiLB](https://haoqisong-pro.github.io/nexilb-docs/running/)。
+Start the consumer from the case-package root. Configuration paths and referenced particle tables, trajectories, and geometry assets use `/` and remain relative to the case directory. View velocity, pressure, density, phase fields, and particle states from the VTS output in ParaView. See [Installation](https://haoqisong-pro.github.io/nexilb-docs/installation/) and [Running NexiLB](https://haoqisong-pro.github.io/nexilb-docs/running/) for the complete workflow.
 
 ## Four Models
 
-NexiLB 提供四个明确的模型入口。选择模型时应以物理问题为依据；规定运动边界不等同于自由颗粒动力学，纯流体 N 相问题也不需要构造空颗粒系统。
+NexiLB exposes four explicit model entries. Select the model from the physical problem: a prescribed moving boundary is not free-particle dynamics, and a pure N-phase fluid problem does not require an empty particle system.
 
 | Model | Stable ID | Intended use |
 |---|---|---|
-| NSAllen | `model.nexilb.NSAllen` | 两相流动与界面演化 |
-| NSAllenImbPrescribedMotion | `model.nexilb.NSAllenImbPrescribedMotion` | 两相流动与由轨迹给定的浸入移动边界 |
-| NPhaseContactAngle | `model.NPhaseContactAngle` | 不可混溶 N 相流动、静态表面和嵌入曲面润湿 |
-| NPhaseImbDemContactAngle | `model.NPhaseImbDemContactAngle` | 自由颗粒、移动表面润湿、流固耦合与 DEM 接触 |
+| NSAllen | `model.nexilb.NSAllen` | Two-phase flow and interface evolution |
+| NSAllenImbPrescribedMotion | `model.nexilb.NSAllenImbPrescribedMotion` | Two-phase flow with an immersed moving boundary defined by a trajectory |
+| NPhaseContactAngle | `model.NPhaseContactAngle` | Immiscible N-phase flow and wetting on stationary or embedded curved surfaces |
+| NPhaseImbDemContactAngle | `model.NPhaseImbDemContactAngle` | Free particles, moving-surface wetting, fluid–solid coupling, and DEM contact |
 
-模型方程、适用范围和配置方法见 [Core Models & API](https://haoqisong-pro.github.io/nexilb-docs/models/)。
+Equations, applicability, and configuration are described in [Core Models & API](https://haoqisong-pro.github.io/nexilb-docs/models/).
 
 ## Examples
 
 <table>
   <tr>
     <td width="50%" align="center">
-      <img src="https://haoqisong-pro.github.io/nexilb-docs/_static/media/showcase/NexiLB__CylinderWaterEntry__D75__phase__2d-xy__t000000-t011461.gif" alt="NexiLB 圆柱入水计算与实验对比" width="100%"><br>
-      <strong>圆柱入水 · 计算与实验对比</strong>
+      <img src="https://haoqisong-pro.github.io/nexilb-docs/_static/media/showcase/NexiLB__CylinderWaterEntry__D75__phase__2d-xy__t000000-t011461.gif" alt="NexiLB cylinder water-entry simulation" width="100%"><br>
+      <strong>Cylinder water entry · Simulation and experiment</strong>
     </td>
     <td width="50%" align="center">
-      <img src="https://haoqisong-pro.github.io/nexilb-docs/_static/media/showcase/NexiLB__ThreePhaseContactAngle__theta-60-90__long-run.gif" alt="NexiLB 三相接触角演化" width="100%"><br>
-      <strong>三相接触角 · 独立润湿条件</strong>
+      <img src="https://haoqisong-pro.github.io/nexilb-docs/_static/media/showcase/NexiLB__ThreePhaseContactAngle__theta-60-90__long-run.gif" alt="NexiLB three-phase contact-angle evolution" width="100%"><br>
+      <strong>Three-phase contact angle · Independent wetting conditions</strong>
     </td>
   </tr>
   <tr>
     <td width="50%" align="center">
-      <img src="https://haoqisong-pro.github.io/nexilb-docs/_static/media/showcase/NexiLB__LiquidLens__condition-iii__long-run-t000000-t1000000.gif" alt="NexiLB 三相液透镜演化" width="100%"><br>
-      <strong>三相液透镜 · 非等界面张力</strong>
+      <img src="https://haoqisong-pro.github.io/nexilb-docs/_static/media/showcase/NexiLB__LiquidLens__condition-iii__long-run-t000000-t1000000.gif" alt="NexiLB three-phase liquid-lens evolution" width="100%"><br>
+      <strong>Three-phase liquid lens · Unequal surface tensions</strong>
     </td>
     <td width="50%" align="center">
-      <img src="https://haoqisong-pro.github.io/nexilb-docs/_static/media/showcase/NexiLB__GranularCollapse__submerged-side-projection.gif" alt="NexiLB 三维浸没态颗粒柱坍塌" width="100%"><br>
-      <strong>3D 颗粒柱坍塌 · 浸没工况</strong>
+      <img src="https://haoqisong-pro.github.io/nexilb-docs/_static/media/showcase/NexiLB__GranularCollapse__submerged-side-projection.gif" alt="NexiLB 3D submerged granular-column collapse" width="100%"><br>
+      <strong>3D granular-column collapse · Submerged condition</strong>
     </td>
   </tr>
 </table>
 
-文档首页展示了六个主题案例板和十六组演化序列，包括 Rayleigh–Taylor 不稳定性、液透镜、曲面润湿、三相接触角、圆柱入水与颗粒柱坍塌。进入 [Featured Simulations](https://haoqisong-pro.github.io/nexilb-docs/#featured-simulations) 查看完整展示。
+The documentation homepage presents six themed boards and sixteen evolution sequences covering Rayleigh–Taylor instability, liquid lenses, curved-surface wetting, three-phase contact angles, cylinder water entry, and granular-column collapse. Explore the complete [Featured Simulations](https://haoqisong-pro.github.io/nexilb-docs/#featured-simulations).
 
 ## SDK & Developer Interface
 
-NexiLB 的公共接口以稳定 C11 ABI 为核心，并提供 C++17 封装。运行库只要求使用者解析 `nexilb_get_abi_version` 与 `nexilb_get_api` 两个引导符号；随后通过 catalog 选择模型，创建 context 和 model，载入配置，初始化并推进，在同步点读取 snapshot 或 checkpoint，最后按创建顺序的反方向释放对象。
+The public interface is built around a stable C11 ABI with a C++17 wrapper. A consumer resolves only the two bootstrap symbols `nexilb_get_abi_version` and `nexilb_get_api`; it then selects a model from the catalog, creates a context and model, loads a configuration, initializes and advances the model, reads snapshots or checkpoints at synchronization points, and finally releases objects in reverse creation order.
 
 ```cmake
 find_package(NexiLBHeaders 1.0.0 EXACT CONFIG REQUIRED)
@@ -143,33 +144,33 @@ target_compile_features(my_nexilb_case PRIVATE c_std_11)
 target_link_libraries(my_nexilb_case PRIVATE NexiLB::Headers ${CMAKE_DL_LIBS})
 ```
 
-仓库提供四个可编译二次开发模板：
+Four compilable secondary-development templates are included:
 
 | Template | Starting point |
 |---|---|
-| `nphase-wetting-minimal` | N 相纯流体、壁面或嵌入曲面润湿 |
-| `imb-coupling-minimal` | 固定颗粒、规定轨迹和流固耦合 |
-| `dem-contact-restart` | 自由颗粒、接触历史与 checkpoint/restart |
-| `pure-coupled-degeneration` | 纯流体与耦合模型的退化一致性比较 |
+| `nphase-wetting-minimal` | Pure N-phase fluids and wetting on walls or embedded curved surfaces |
+| `imb-coupling-minimal` | Fixed particles, prescribed trajectories, and fluid–solid coupling |
+| `dem-contact-restart` | Free particles, contact history, and checkpoint/restart |
+| `pure-coupled-degeneration` | Degeneration-consistency comparisons between pure-fluid and coupled models |
 
-建立新案例时，从物理过程最接近的模板复制案例包，并明确更新模型 ID、输入资产、2D/3D 与 f32/f64 变体、所需能力和验收条件。具体目录、消费者接入和测试方法见 [Developer Guide](https://haoqisong-pro.github.io/nexilb-docs/secondary-development/) 与 [`examples/secondary-development`](examples/secondary-development/README.md)。
+To create a case, copy the template closest to the intended physics and explicitly update the model ID, input assets, 2D/3D and f32/f64 variant, required capabilities, and acceptance criteria. See the [Developer Guide](https://haoqisong-pro.github.io/nexilb-docs/secondary-development/) and [`examples/secondary-development`](examples/secondary-development/README.md) for the directory structure, consumer integration, and testing workflow.
 
 ## Documentation
 
 | Guide | Purpose |
 |---|---|
-| [Getting Started](https://haoqisong-pro.github.io/nexilb-docs/getting-started/) | 认识四个模型并选择计算入口 |
-| [Installation](https://haoqisong-pro.github.io/nexilb-docs/installation/) | 准备运行环境、程序包与 SDK |
-| [API Reference](https://haoqisong-pro.github.io/nexilb-docs/api/) | C ABI、对象生命周期与可运行示例 |
-| [Model Equations](https://haoqisong-pro.github.io/nexilb-docs/theory/) | 连续模型、格子离散与耦合方法 |
-| [Validation](https://haoqisong-pro.github.io/nexilb-docs/validation/) | 为新问题建立数值比较与验收条件 |
-| [References](https://haoqisong-pro.github.io/nexilb-docs/references/) | 模型与数值方法的主要参考文献 |
+| [Getting Started](https://haoqisong-pro.github.io/nexilb-docs/getting-started/) | Understand the four models and choose a computational entry point |
+| [Installation](https://haoqisong-pro.github.io/nexilb-docs/installation/) | Prepare the runtime environment, packages, and SDK |
+| [API Reference](https://haoqisong-pro.github.io/nexilb-docs/api/) | Use the C ABI, object lifecycle, and runnable examples |
+| [Model Equations](https://haoqisong-pro.github.io/nexilb-docs/theory/) | Study the continuum models, lattice discretization, and coupling methods |
+| [Validation](https://haoqisong-pro.github.io/nexilb-docs/validation/) | Define numerical comparisons and acceptance criteria for a new problem |
+| [References](https://haoqisong-pro.github.io/nexilb-docs/references/) | Find the principal references for models and numerical methods |
 
 ## Citation & Paper
 
-NexiLB 相关论文正在同行评审阶段。论文正式发表后，推荐题目、作者、期刊、DOI 和引用格式将在 [Paper](https://haoqisong-pro.github.io/nexilb-docs/papers/) 页面更新。在此之前，研究成果中应说明使用了 NexiLB，并联系维护者确认适当的致谢方式。
+The paper associated with NexiLB is under peer review. Its recommended title, authors, journal, DOI, and citation format will be added to the [Paper](https://haoqisong-pro.github.io/nexilb-docs/papers/) page after formal publication. Until then, research outputs should identify NexiLB and contact the maintainer to confirm appropriate acknowledgement.
 
-仓库已经提供 [`CITATION.cff`](CITATION.cff)。当前版本可记为：
+The repository includes [`CITATION.cff`](CITATION.cff). The current version may be cited as:
 
 > Haoqi Song. *NexiLB public SDK*, version 1.0.0, 2026.
 
@@ -177,14 +178,14 @@ NexiLB 相关论文正在同行评审阶段。论文正式发表后，推荐题�
 
 Copyright © 2026 Haoqi Song. All rights reserved.
 
-NexiLB v1.0.0 采用自定义的 `LicenseRef-NexiLB-Research-Use-1.0` 受限研究使用许可。只有单独签发、明确列出被许可人、研究项目、版本、用途、平台和期限的书面授权才会产生使用权。完整条款见 [`LICENSE.md`](LICENSE.md)，申请要求见 [License](https://haoqisong-pro.github.io/nexilb-docs/licensing/)。
+NexiLB v1.0.0 uses the custom restricted research-use license `LicenseRef-NexiLB-Research-Use-1.0`. Permission exists only through a separately issued written authorization that identifies the licensee, research project, version, purpose, platform, and term. See [`LICENSE.md`](LICENSE.md) for the complete terms and the documentation [License](https://haoqisong-pro.github.io/nexilb-docs/licensing/) page for application requirements.
 
-这一许可安排源于相关论文尚处于同行评审阶段，是服务于当前研究与负责任共享的临时边界。近三年的探索使我们更加期待 NexiLB 能够支持更多前沿研究，并在同行的使用、验证与共同改进中持续成长。论文通过评审后，仓库权限将进一步开放；随着研究持续深入，代码内容与使用权限也将逐步扩大，后续发布与许可策略只会向更加开放的方向发展。
+This licensing arrangement is a temporary boundary while the associated paper remains under peer review. Nearly three years of exploration have strengthened our hope that NexiLB can support more frontier research and continue to grow through use, verification, and shared improvement by the research community. After peer review, repository access will be broadened; as the research develops, more code and permissions will be released, and future policy will move only toward greater openness.
 
 ## People & Acknowledgements
 
-- **Supervisor — 王路君**：浙江大学建筑工程学院研究员、博士生导师，指导本项目的研究方向、数值方法与学术工作。[Official profile](https://person.zju.edu.cn/0616512)
-- **Author & Maintainer — Haoqi Song**：浙江大学建筑工程学院土木水利专业硕士研究生；NexiLB 的设计者、主要开发者与维护者。[ResearchGate](https://www.researchgate.net/profile/Haoqi-Song-3) · [haoqisong@126.com](mailto:haoqisong@126.com)
-- **Contributor · v1.0.0 — Guochong Liu**：对理论与验证完备性提出重要意见，并参与部分图件整理，为首版发布提供重要辅助支持。
+- **Supervisor — Lujun Wang**: Research professor and doctoral supervisor at the College of Civil Engineering and Architecture, Zhejiang University. He guides the project's research direction, numerical methods, and academic work. [Official profile](https://person.zju.edu.cn/0616512)
+- **Author & Maintainer — Haoqi Song**: Master's student in Civil and Hydraulic Engineering at the College of Civil Engineering and Architecture, Zhejiang University; designer, principal developer, and maintainer of NexiLB. [ResearchGate](https://www.researchgate.net/profile/Haoqi-Song-3) · [haoqisong@126.com](mailto:haoqisong@126.com)
+- **Contributor · v1.0.0 — Guochong Liu**: Provided important advice on theoretical and validation completeness and assisted with the preparation of selected figures, making a significant supporting contribution to the initial release.
 
-NexiLB 依托 Haoqi Song 硕士研究课题开展，面向复杂多相流与颗粒耦合数值方法研发。
+NexiLB is developed as part of Haoqi Song's master's research on numerical methods for complex multiphase flows and particle coupling.

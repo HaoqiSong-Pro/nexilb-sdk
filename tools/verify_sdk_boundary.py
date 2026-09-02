@@ -13,7 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 EXPECTED_ROOT_FILES = {
     ".gitattributes", ".gitignore", ".mailmap", "CITATION.cff",
     "CMakeLists.txt", "CMakePresets.json", "CONTRIBUTING.md", "LICENSE.md",
-    "NOTICE.md", "README.md", "SECURITY.md",
+    "NOTICE.md", "README.md", "README.zh-CN.md", "SECURITY.md",
 }
 EXPECTED_ROOT_DIRS = {
     ".github", "abi", "catalog", "cmake", "contracts", "evidence",
@@ -62,6 +62,15 @@ def main() -> None:
         fail(f"unexpected root files; extra={sorted(root_files - EXPECTED_ROOT_FILES)}, missing={sorted(EXPECTED_ROOT_FILES - root_files)}")
     if root_dirs != EXPECTED_ROOT_DIRS:
         fail(f"unexpected root directories; extra={sorted(root_dirs - EXPECTED_ROOT_DIRS)}, missing={sorted(EXPECTED_ROOT_DIRS - root_dirs)}")
+
+    english_readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    chinese_readme = (ROOT / "README.zh-CN.md").read_text(encoding="utf-8")
+    if 'href="README.zh-CN.md"' not in english_readme:
+        fail("English README does not link to the Chinese README")
+    if 'href="README.md"' not in chinese_readme:
+        fail("Chinese README does not link to the English README")
+    if "| Checksums |" in english_readme or "| Checksums |" in chinese_readme:
+        fail("README contains a diagnostic checksums entry")
 
     legacy_name = "".join(("c", "l", "i", "p"))
     seen_casefold: dict[str, str] = {}
